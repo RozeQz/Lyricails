@@ -5,33 +5,31 @@
 
   <h1>Posts</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Lyrics</th>
-        <th>User</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td><%= post.title %></td>
-          <td><%= post.lyrics %></td>
-          <td><%= post.user_id %></td>
-          <td><%= link_to 'Show', post %></td>
-          <td><%= link_to 'Edit', edit_post_path(post) %></td>
-          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+  <% @posts.each do |post| %>
+    <div class="post-container">
+      <% if post.music.present? %>
+        <p><strong><%= post.user_id %></strong> published: </p>
+        <div class="audio-container">
+          <div class="track-name"> <%= post.title %> </div>
+          <div class="audio">
+            <audio controls class="music-bar">
+              <source src="<%= rails_blob_url(post.music) %>" type="<%= post.music.content_type %>" >
+            </audio>
+          </div>
+        </div>
+        <p><strong>Текст песни</strong></p>
+        <pre><%= post.lyrics %></pre>
       <% end %>
-    </tbody>
-  </table>
+      <div><%= link_to 'Show', post %></div>
+      <div><%= link_to 'Edit', edit_post_path(post) %></div>
+      <div><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    </div>
+  <% end %>
 
-  <br>
+  <br/>
+  
 
-  <%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path %>
 <% else %>
 <%= link_to 'Register!', new_user_path %>
 <% end %>

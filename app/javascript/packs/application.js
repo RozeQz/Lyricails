@@ -8,7 +8,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-import '@popperjs/core'
+// import "wavesurfer"
 // import 'bootstrap/js/dist/dropdown'
 
 Rails.start()
@@ -18,3 +18,5 @@ ActiveStorage.start()
 import "bootstrap"
 import "../stylesheets/application.scss"
 // import "../../assets/stylesheets/application.scss"
+
+require("../custom/script")

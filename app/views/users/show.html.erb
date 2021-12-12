@@ -5,47 +5,96 @@
   .user-buttons{
     margin-top: 40px;
   }
+  .user-info{
+    width: 50%;
+  }
+  .user-songs{
+    width: 75%;
+    text-align: start;
+  }
+  .user-page{
+    display: flex;
+    margin: auto;
+    justify-content: start;
+  }
+  .song{
+    background-color: #eeeeee;
+    padding: 8px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .song .title{
+    font-weight: bold;
+  }
+  .song:hover{
+    background-color: #d6d6d6;
+  }
+  .song-buttons{
+    padding-top: 10px;
+  }
 </style>
 
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.username %></h1><br/>
+<div class="user-page">
 
-<p>
-  <strong>Имя пользователя:</strong>
-  <%= @user.username %>
-</p>
+  <div class="user-info">
+    <h1><%= @user.username %></h1><br/>
 
-<p>
-  <strong>Электронная почта:</strong>
-  <%= @user.email %>
-</p>
+    <p>
+      <strong>Имя пользователя:</strong>
+      <%= @user.username %>
+    </p>
 
-<p>
-  <strong>Пользователь зарегистрирован:</strong>
-  <time datetime="<%= @user.formatted_created_at %>">
-    <%= @user.formatted_created_at %>
-  </time>
-</p>
+    <p>
+      <strong>Электронная почта:</strong>
+      <%= @user.email %>
+    </p>
 
-<p>
-  <strong>Последний вход на сайт:</strong>
-  <% if @online_users&.index(@user) %>
-    <span class="badge alert-success">Online</span>
-  <% else %>
-    <% if @user.last_login_at > 8.hours.ago %>
-      <%= @user.last_login_at.nil? ? "Never signed in" : time_ago_in_words(@user.last_login_at) %> ago
-    <% else %>
-      <time datetime="<%= @user.last_login_at unless @user.last_login_at.nil? %>">
-        <%= @user.formated_last_login_at %>
+    <p>
+      <strong>Пользователь зарегистрирован:</strong>
+      <time datetime="<%= @user.formatted_created_at %>">
+        <%= @user.formatted_created_at %>
       </time>
-    <% end %>
-  <% end %>
-</p>
+    </p>
 
-<% if current_user == @user %>
-  <div class="user-buttons">
-    <%= link_to 'Редактировать', edit_user_path(@user), class: "btn btn-outline-primary me-3" %>
-    <%= link_to 'Удалить аккаунт', @user, class: "btn btn-outline-danger me-2", method: :delete, data: { confirm: 'Вы уверены?' } %>
+    <p>
+      <strong>Последний вход на сайт:</strong>
+      <% if @online_users&.index(@user) %>
+        <span class="badge alert-success">Online</span>
+      <% else %>
+        <% if @user.last_login_at > 8.hours.ago %>
+          <%= @user.last_login_at.nil? ? "Never signed in" : time_ago_in_words(@user.last_login_at) %> ago
+        <% else %>
+          <time datetime="<%= @user.last_login_at unless @user.last_login_at.nil? %>">
+            <%= @user.formated_last_login_at %>
+          </time>
+        <% end %>
+      <% end %>
+    </p>
+
+    <% if current_user == @user %>
+      <div class="user-buttons">
+        <%= link_to 'Редактировать', edit_user_path(@user), class: "btn btn-outline-primary me-3" %>
+        <%= link_to 'Удалить аккаунт', @user, class: "btn btn-outline-danger me-2", method: :delete, data: { confirm: 'Вы уверены?' } %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
+  <div class="user-songs">
+  <h1> Список работ </h1><br/>
+    <% @user.posts.each do |post| %>
+      <div class="song" onClick="">
+        <p class="title"><%= post.title %></p>
+        <div class="lyrics"><%= post.lyrics %></div>
+        <% if current_user == @user %>
+          <div class="song-buttons">
+            <%= link_to 'Открыть', post %>
+            <%= link_to 'Редактировать', edit_post_path(post) %>
+            <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' } %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
