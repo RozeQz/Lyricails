@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project</title>
+    <meta charset="utf-8">
+    <title><%= full_title(yield(:page_title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
+
+    <style>
+    .main-container{
+      margin-bottom: 70px;
+    }
+    </style>
+
   </head>
 
   <body>
+    <%= yield :main_menu %>
+    
+    <main class="container main-container">
+
+    <ul class="p-0">
+      <% flash.each do |k, v| %>
+          <%= tag.div v, class: "alert alert-#{k}", role: "alert" %>
+      <% end %>
+    </ul>
+
     <%= yield %>
+      
+    </main>
   </body>
 </html>

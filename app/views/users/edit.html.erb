@@ -1,6 +1,16 @@
-<h1>Editing User</h1>
+<% provide :page_title, 'Настройки' %>
+<% currently_at current_user.username %>
+
+<style>
+  .registration-label{
+    padding-bottom: 16px;
+    font-family: var(--bs-font-sans-serif);
+    /* color: #0d6efd; */
+  }
+</style>
+
+<%= render 'shared/errors', object: @user %>
+
+<h1 class="registration-label">Редактировать пользователя</h1>
 
 <%= render 'form', user: @user %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

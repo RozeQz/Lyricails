@@ -1,5 +1,35 @@
-<h1>New User</h1>
+<% provide :page_title, 'Регистрация' %>
 
-<%= render 'form', user: @user %>
+<style>
+  .container{
+    padding-top: 70px;
+  }
+  .registration-label{
+    padding-bottom: 16px;
+    font-family: var(--bs-font-sans-serif);
+    /* color: #0d6efd; */
+  }
+  .form-settings{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+  }
+  .form-button{
+    text-align: center;
+  }
+</style>
 
-<%= link_to 'Back', users_path %>
+<%= render 'shared/errors', object: @user %>
+
+<div class="container">
+  <h1 class="text-center registration-label">Регистрация</h1>
+
+  <%= render 'form', user: @user %>
+
+  <p class="text-dark text-center pt-3">
+    Уже есть аккаунт?
+    <a class="text-link" href="/session/login">Войдите</a>
+  </p>
+</div>
+

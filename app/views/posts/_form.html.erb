@@ -1,32 +1,17 @@
-<%= form_with(model: post) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with model: post, class: 'col-4 form-settings' do |form| %>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <div class="form-group pb-3">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: 'Название', class: 'form-control', required: true %>
   </div>
 
-  <div class="field">
+  <div class="form-group pb-3">
     <%= form.label :lyrics %>
-    <%= form.text_area :lyrics %>
+    <%= form.text_area :lyrics, placeholder: 'Текст песни', class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+  <div class="form-group pb-3 mt-3 form-button">
+    <%= form.submit (post.new_record? ? 'Выложить' : 'Сохранить'), class: 'btn btn-primary' %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  
 <% end %>

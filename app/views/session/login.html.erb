@@ -1,0 +1,37 @@
+<% provide :page_title, 'Вход' %>
+
+<style>
+  .container{
+    padding-top: 70px;
+  }
+  .input-label{
+    padding-bottom: 16px;
+    font-family: var(--bs-font-sans-serif);
+    /* color: #0d6efd; */
+  }
+</style>
+
+<div class="container">
+
+  <h1 class="text-center input-label">Вход</h1>
+
+  <%= form_with url: session_create_url, class: 'col-4 d-flex flex-column justify-content-center m-auto', method: :post, local:true do |form| %>
+
+    <div class="form-group pb-3 pt-10">
+      <%= form.text_field :username, placeholder: 'Имя пользователя', class: 'form-control', required: true%>
+    </div>
+
+    <div class="form-group pb-3">
+      <%= form.password_field :password, placeholder: 'Пароль', class: 'form-control', required: true%>
+    </div>
+
+    <div class="form-group pt-3 pb-3 text-center">
+      <%= form.submit 'Войти', class: 'btn btn-primary' %>
+    </div>
+
+  <% end %>
+  <p class="text-dark text-center pt-3">
+        Еще нет профиля?
+        <%= link_to 'Зарегистрируйтесь', new_user_path %>
+  </p>
+</div>
