@@ -27,6 +27,8 @@ gem 'image_processing', '~> 1.2'
 gem 'active_storage_validations', '~> 0.9.6'
 gem 'gravatar_image_tag', '~> 1.2'
 gem 'mini_magick', '~> 4.11'
+gem 'russian', '~> 0.6.0'
+gem 'acts_as_votable', '~> 0.13.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

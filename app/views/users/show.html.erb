@@ -58,7 +58,8 @@
   </div>
 
   <div class="user-songs">
-  <h1> Список работ </h1><br/>
+  <h1> Публикации </h1><br/>
+    <div class="user-posts-count">Опубликовано: <%= pluralize( @user.posts.count, 'композиция', plural: 'композиции', locale: :ru ) %></div>
     <% @user.posts.each do |post| %>
       <div class="song" onClick="">
         <p class="title"><%= post.title %></p>

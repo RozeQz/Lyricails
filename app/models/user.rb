@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
   has_many :posts, dependent: :destroy
-  has_many :comments
+  has_many :likes, dependent: :destroy
   has_one_attached :avatar
 
   after_commit :add_default_avatar, on: %i[create update]

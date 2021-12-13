@@ -9,6 +9,35 @@
   }
 }
 
+.user-posts-count{
+  margin-bottom: 15px;
+}
+
+.post-buttons{
+  display: flex;
+}
+
+.post-like:hover{
+  cursor: pointer;
+}
+
+.like-section{
+  i {
+    color: #ddd;
+  }
+  i:hover{
+    color: #999;
+  }
+  i.active {
+    color: #555;
+  }
+}
+
+.post-button{
+  margin: auto;
+  width: 100px;
+}
+
 .user-buttons{
   margin-top: 40px;
 }

@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :comments
+  has_many :likes, dependent: :destroy
 
   # has_attached_file :photo, styles: {large: "450=450>", thumb: "50x50#"}
   # validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/

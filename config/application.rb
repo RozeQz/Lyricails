@@ -13,6 +13,8 @@ module Project
 
     config.serve_static_assets = true
 
+    config.i18n.default_locale = :ru
+
 
     # Configuration for the application, engines, and railties goes here.
     #

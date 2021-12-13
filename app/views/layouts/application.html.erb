@@ -7,12 +7,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.min.js"></script>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
     <%# <script src="https://unpkg.com/wavesurfer.js"></script> %>
     <%# <script src="../../javascript/custom/wave.js" type="module"></script> %>
+
+    <script>
+      jQuery(function($) {
+        $(".post-like").on("click", function(){
+          $.ajax({
+            url: '/post/like/'+$(this).data("id"),
+            method: 'GET'
+          }).done(function(response){
+            console.log(response);
+          })
+        })
+      })
+    </script>
 
     <style>
     .main-container{

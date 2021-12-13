@@ -11,6 +11,10 @@ import "channels"
 // import "wavesurfer"
 // import 'bootstrap/js/dist/dropdown'
 
+//= require jquary
+//= require jquary_ujs
+//= require rails-ujs
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
