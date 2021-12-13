@@ -1,21 +1,14 @@
-<% provide :page_title, 'Лента' %>
-<% currently_at 'Главная' %>
+<% provide :page_title, 'Моя коллекция' %>
+<% currently_at 'Моя коллекция' %>
 
 <% if user_signed_in? %>
 
-  <h1>Лента</h1>
+  <h1>Моя коллекция</h1>
 
-  <% @posts.each do |post| %>
+  <% current_user.find_voted_items.each do |post| %>
     <div class="post-container" id="post-<%= post.id %>">
       <p><strong><%= post.user.username %></strong> published: </p>
-      <% if post.user_id == current_user.id %>
-        <div class="post-buttons">
-          <div class="post-button"><%= link_to 'Show', post, class: 'btn btn-primary'%></div>
-          <div class="post-button"><%= link_to 'Edit', edit_post_path(post), class: 'btn btn-success' %></div>
-          <div class="post-button"><%= link_to 'Destroy', post, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        </div>
-      <% end %>
-      <div class="audio-container song-<%= post.id %>">
+      <div class="audio-container">
         <div class="track-header">
           <div class="track-name"> <%= post.title %> </div>
           <div class="like-section">
@@ -45,11 +38,4 @@
       <% end %>
     </div>
   <% end %>
-
-  <br/>
-  
-
-<%= link_to 'New Post', new_post_path %>
-<% else %>
-<%= link_to 'Register!', new_user_path %>
 <% end %>

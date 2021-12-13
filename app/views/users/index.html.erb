@@ -6,8 +6,7 @@
 <table class="w-100">
   <thead>
     <tr class="row">
-      <th class="col-2">Имя пользователя</th>
-      <th class="col-4">Хэшированный пароль</th>    <%# для того, чтобы убедиться, что пароль нельзя украсть %>
+      <th class="col-2">Имя пользователя</th>  <%# для того, чтобы убедиться, что пароль нельзя украсть %>
       <th class="col-2">Последний вход на сайт</th>
       <th class="col-1"></th>
     </tr>
@@ -17,7 +16,6 @@
     <% @users.each do |user| %>
       <tr class="row">
         <td class="col-2"><%= user.username %></td>
-        <td class="col-4"><%= truncate user.password_digest, length: 45 %></td>
         <td class="col-2">
         <% if @online_users&.index(user) %>
           <span class="badge badge-pill alert-success">Online</span>
@@ -39,5 +37,4 @@
 
 <br>
 
-<button onClick='location.href="/users/new"' type="button" class="btn btn-outline-primary me-2">Зарегистрировать пользователя</button>
-<%# link_to 'Зарегистрировать пользователя', new_user_path %>
+<%# <button onClick='location.href="/users/new"' type="button" class="btn btn-outline-primary me-2">Зарегистрировать пользователя</button> %>

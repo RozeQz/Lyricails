@@ -21,18 +21,6 @@
   cursor: pointer;
 }
 
-.like-section{
-  i {
-    color: #ddd;
-  }
-  i:hover{
-    color: #999;
-  }
-  i.active {
-    color: #555;
-  }
-}
-
 .post-button{
   margin: auto;
   width: 100px;
@@ -97,6 +85,18 @@
   margin-bottom: 10px;
 }
 
+.audio-container .like-section{
+  display: flex;
+}
+
+.audio-container .like-item{
+  margin-right: 7px;
+
+  i{
+    color: #F664AF;
+  }
+}
+
 .audio-container .audio{
   background: #222;
   width: 100%;
@@ -105,7 +105,7 @@
   display: flex;
 }
 
-.audio-container .track-name{
+.audio-container .track-header{
   position: absolute;
   color: #fff;
   background-color: rgba(0,0,0,0.7);
@@ -113,6 +113,8 @@
   padding: 8px 32px;
   border-radius: 10px;
   font-size: 13px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .audio-container .audio .music-bar {

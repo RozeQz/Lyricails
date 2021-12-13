@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'session/login'
   post 'session/create'
   get 'session/logout'
-  resources :users
+  resources :users do
+    member do
+      get "collection"
+    end
+  end
   resources :posts do
     member do
       patch "upvote", to: "posts#upvote"

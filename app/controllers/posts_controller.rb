@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy upvote ]
+  before_action :set_post, only: %i[show edit update destroy upvote]
 
   # GET /posts or /posts.json
   def index

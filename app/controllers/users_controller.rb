@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy collection]
   skip_before_action :require_login, only: %i[new create]
   skip_forgery_protection
 
@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @online_users = User.where('last_login_at > ?', 3.minutes.ago)
+  end
+
+  def collection
   end
 
   # GET /users/1 or /users/1.json
