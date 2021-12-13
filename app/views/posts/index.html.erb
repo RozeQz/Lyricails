@@ -8,7 +8,7 @@
   <% @posts.each do |post| %>
     <div class="post-container">
       <% if post.music.present? %>
-        <p><strong><%= post.user_id %></strong> published: </p>
+        <p><strong><%= post.user.username %></strong> published: </p>
         <div class="audio-container">
           <div class="track-name"> <%= post.title %> </div>
           <div class="audio">

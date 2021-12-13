@@ -1,4 +1,22 @@
-<%= form_with model: user, class: 'col-4 form-settings' do |form| %>
+<%= form_with model: user, html: {multipart: true}, class: 'col-4 form-settings' do |form| %>
+
+  <% user.add_default_avatar %>
+
+  <% unless user.new_record? %>
+    <div class="form-group pb-3">
+      <% if user.avatar.attached? %>
+        <%= image_tag user.avatar.variant(resize: "300x300!").processed %>
+      <% else %>
+        <%# <%= image_tag '../../assets/images/default_avatar.jpg' %> %>
+      <% end %>
+    </div>
+
+    <div class="form-group pb-3 d-flex">
+      <%= form.file_field :avatar, direct_upload: true, class: 'form-control' %>
+      <button class="form-control w-25 btn-danger btn", onClick="<%= user.avatar.purge %>">Удалить</button>
+    </div>
+  <% end %>
+
   <div class="form-group pb-3 pt-10">
     <%= form.text_field :username, placeholder: 'Имя пользователя', class: 'form-control', required: true%>
   </div>
@@ -8,7 +26,11 @@
   </div>
 
   <div class="form-group pb-3">
+  <% if user.new_record? %>
     <%= form.password_field :password, placeholder: 'Пароль', class: 'form-control', required: true%>
+  <% else %>
+    <%= form.password_field :password, placeholder: 'Пароль', class: 'form-control' %>
+  <% end %>
   </div>
 
   <div class="form-group pb-3">
@@ -17,13 +39,18 @@
 
   <% unless user.new_record? %>
     <div class="form-group pb-3">
-      <%= form.password_field :old_password, placeholder: 'Старый пароль', class: 'form-control', required: true%>
+      <%= form.password_field :old_password, placeholder: 'Старый пароль', class: 'form-control' %>
     </div>
   <% end %>
 
-  <div class="form-group pb-3 mt-3 form-button">
-      <%= form.submit (user.new_record? ? 'Зарегистрироваться' : 'Сохранить'), class: 'btn btn-primary' %>
+  <div class="d-flex justify-content-space-between">
+
+    <div class="form-group pb-3 mt-3 form-button">
+        <%= form.submit (user.new_record? ? 'Зарегистрироваться' : 'Сохранить'), class: 'btn btn-primary me-4' %>
+    </div>
+
   </div>
+
 
 <% end %>
 

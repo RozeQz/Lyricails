@@ -1,9 +1,15 @@
 class User < ApplicationRecord
   attr_accessor :old_password
 
-  has_secure_password
-  has_many :posts
+  has_secure_password validations: false
+  has_many :posts, dependent: :destroy
   has_many :comments
+  has_one_attached :avatar
+
+  after_commit :add_default_avatar, on: %i[create update]
+  before_save :add_default_avatar
+
+  validates :avatar, content_type: %i[png jpg jpeg]
 
   validate :password_presence
   validate :correct_old_password, on: :update, if: -> { password.present? }
@@ -27,6 +33,28 @@ class User < ApplicationRecord
 
   def formated_last_login_at
     last_login_at.strftime('%d.%m.%Y %T %Z')
+  end
+
+  def avatar_thumbnail(size = 300)
+    if avatar.attached?
+      avatar.variant(resize: "#{size}x#{size}!").processed
+    else
+      '../assets/images/default_avatar.jpg'
+    end
+  end
+
+  def add_default_avatar
+    unless avatar.attached?
+      avatar.attach(
+        io: File.open(
+          Rails.root.join(
+            'app', 'assets', 'images', 'default_avatar.jpg'
+          )
+        ),
+        filename: 'default_avatar.jpg',
+        content_type: 'image/jpg'
+      )
+    end
   end
 
   private

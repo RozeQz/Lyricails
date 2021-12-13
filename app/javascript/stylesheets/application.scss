@@ -9,12 +9,54 @@
   }
 }
 
+.user-buttons{
+  margin-top: 40px;
+}
+
+.user-info{
+  width: 50%;
+}
+
+.user-songs{
+  width: 75%;
+  text-align: start;
+}
+
+.user-page{
+  display: flex;
+  margin: auto;
+  justify-content: start;
+}
+
+.song{
+  background-color: #eeeeee;
+  padding: 8px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.song .title{
+  font-weight: bold;
+}
+
+.song:hover{
+  background-color: #d6d6d6;
+}
+
+.song-buttons{
+  padding-top: 10px;
+}
+
 .post-container{
   background: #eeeeee;
   width: 50%;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 10px;
+}
+
+.user-typed-info{
+  padding-top: 20px;
 }
 
 .audio-container{

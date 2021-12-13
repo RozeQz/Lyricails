@@ -1,77 +1,53 @@
 <% provide :page_title, @user.username %>
 <% currently_at @user.username %>
 
-<style>
-  .user-buttons{
-    margin-top: 40px;
-  }
-  .user-info{
-    width: 50%;
-  }
-  .user-songs{
-    width: 75%;
-    text-align: start;
-  }
-  .user-page{
-    display: flex;
-    margin: auto;
-    justify-content: start;
-  }
-  .song{
-    background-color: #eeeeee;
-    padding: 8px 16px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  .song .title{
-    font-weight: bold;
-  }
-  .song:hover{
-    background-color: #d6d6d6;
-  }
-  .song-buttons{
-    padding-top: 10px;
-  }
-</style>
-
 <p id="notice"><%= notice %></p>
 
 <div class="user-page">
 
   <div class="user-info">
-    <h1><%= @user.username %></h1><br/>
+    <div class="user-title">
+      <h1><%= @user.username %></h1>
+    </div>
 
-    <p>
-      <strong>Имя пользователя:</strong>
-      <%= @user.username %>
-    </p>
-
-    <p>
-      <strong>Электронная почта:</strong>
-      <%= @user.email %>
-    </p>
-
-    <p>
-      <strong>Пользователь зарегистрирован:</strong>
-      <time datetime="<%= @user.formatted_created_at %>">
-        <%= @user.formatted_created_at %>
-      </time>
-    </p>
-
-    <p>
-      <strong>Последний вход на сайт:</strong>
-      <% if @online_users&.index(@user) %>
-        <span class="badge alert-success">Online</span>
+    <div class="user-avatar">
+      <%# image_tag @user.avatar.variant(resize: "100x100!").processed %>
+      <% @user.add_default_avatar %>
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar.variant(resize: "300x300!").processed %>
       <% else %>
-        <% if @user.last_login_at > 8.hours.ago %>
-          <%= @user.last_login_at.nil? ? "Never signed in" : time_ago_in_words(@user.last_login_at) %> ago
-        <% else %>
-          <time datetime="<%= @user.last_login_at unless @user.last_login_at.nil? %>">
-            <%= @user.formated_last_login_at %>
-          </time>
-        <% end %>
+        <%# <%= image_tag '../../assets/images/default_avatar.jpg' %> %>
       <% end %>
-    </p>
+    </div>
+
+    <div class="user-typed-info">
+      <div class="info-item">
+        <strong>Электронная почта:</strong>
+        <%= @user.email %>
+      </div>
+
+      <div class="info-item">
+        <strong>Пользователь зарегистрирован:</strong>
+        <time datetime="<%= @user.formatted_created_at %>">
+          <%= @user.formatted_created_at %>
+        </time>
+      </div>
+
+      <div class="info-item">
+        <strong>Последний вход на сайт:</strong>
+        <% if @online_users&.index(@user) %>
+          <span class="badge alert-success">Online</span>
+        <% else %>
+          <% if @user.last_login_at > 8.hours.ago %>
+            <%= @user.last_login_at.nil? ? "Never signed in" : time_ago_in_words(@user.last_login_at) %> ago
+          <% else %>
+            <time datetime="<%= @user.last_login_at unless @user.last_login_at.nil? %>">
+              <%= @user.formated_last_login_at %>
+            </time>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
     <% if current_user == @user %>
       <div class="user-buttons">
