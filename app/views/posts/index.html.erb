@@ -39,9 +39,9 @@
       <% end %>
     
 
-    <%= post.likes.count %>
     <div class="like-section">
       <i class="fas fa-heart post-like like-<%= post.id %> <%= 'active' if post_liked_by_user?(post.id)  %>" data-id="<%= post.id %>"></i>
+      <%= render "posts/upvote_link", post: post %>
     </div>
 
     </div>
