@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy upvote]
+  before_action :set_post, only: %i[edit update destroy upvote]
+  skip_before_action :require_login, only: %i[index]
 
   # GET /posts or /posts.json
   def index
@@ -8,8 +9,8 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1 or /posts/1.json
-  def show
-  end
+  # def show
+  # end
 
   def upvote
     if current_user.voted_up_on? @post

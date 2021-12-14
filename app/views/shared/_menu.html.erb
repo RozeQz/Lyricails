@@ -15,10 +15,12 @@
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li><%= nav_tab 'Главная', root_path,
             { class: 'nav-link px-2', current_page: current_page } %></li>
-          <li><%= nav_tab 'Пользователи', users_path,
-            { class: 'nav-link px-2', current_page: current_page } %></li>
-          <li><%= nav_tab 'Моя коллекция', collection_user_path(current_user),
-            { class: 'nav-link px-2', current_page: current_page } %></li>
+          <% if user_signed_in? %>
+            <li><%= nav_tab 'Пользователи', users_path,
+              { class: 'nav-link px-2', current_page: current_page } %></li>
+            <li><%= nav_tab 'Моя коллекция', collection_user_path(current_user),
+              { class: 'nav-link px-2', current_page: current_page } %></li>
+          <% end %>
         </ul>
         
         <div class="col-md-3 justify-content-end d-flex">

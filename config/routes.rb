@@ -8,11 +8,10 @@ Rails.application.routes.draw do
       get "collection"
     end
   end
-  resources :posts do
+  resources :posts, except: %i[show] do
     member do
       patch "upvote", to: "posts#upvote"
+      get 'author_options', to: 'posts#author_options'
     end
   end
-  # get 'post/like/:post_id' => 'likes#save_like', as: :like_post
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
