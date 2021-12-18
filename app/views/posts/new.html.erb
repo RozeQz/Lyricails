@@ -1,8 +1,6 @@
-<% provide :page_title, 'Новый пост' %>
-<% currently_at 'Главная' %>
+<% provide :page_title, 'New post' %>
+<% currently_at 'Home' %>
 
 <h1>New Post</h1>
 
 <%= render 'form', post: @post %>
-
-<%= link_to 'Cancel', posts_path %>

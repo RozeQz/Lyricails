@@ -22,19 +22,19 @@
 
     <div class="user-typed-info">
       <div class="info-item">
-        <strong>Электронная почта:</strong>
+        <strong>Email:</strong>
         <%= @user.email %>
       </div>
 
       <div class="info-item">
-        <strong>Пользователь зарегистрирован:</strong>
+        <strong>Account registrated:</strong>
         <time datetime="<%= @user.formatted_created_at %>">
           <%= @user.formatted_created_at %>
         </time>
       </div>
 
       <div class="info-item">
-        <strong>Последний вход на сайт:</strong>
+        <strong>Last online:</strong>
         <% if @online_users&.index(@user) %>
           <span class="badge alert-success">Online</span>
         <% else %>
@@ -51,24 +51,23 @@
 
     <% if current_user == @user %>
       <div class="user-buttons">
-        <%= link_to 'Редактировать', edit_user_path(@user), class: "btn btn-outline-primary me-3" %>
-        <%= link_to 'Удалить аккаунт', @user, class: "btn btn-outline-danger me-2", method: :delete, data: { confirm: 'Вы уверены?' } %>
+        <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-primary me-3" %>
+        <%= link_to 'Delete account', @user, class: "btn btn-outline-danger me-2", method: :delete, data: { confirm: 'Вы уверены?' } %>
       </div>
     <% end %>
   </div>
 
   <div class="user-songs">
   <h1> Публикации </h1><br/>
-    <div class="user-posts-count">Опубликовано: <%= pluralize( @user.posts.count, 'композиция', plural: 'композиции', locale: :ru ) %></div>
+    <div class="user-posts-count">Published: <%= pluralize( @user.posts.count, 'track', plural: 'tracks', locale: :en ) %></div>
     <% @user.posts.each do |post| %>
       <div class="song" onClick="">
         <p class="title"><%= post.title %></p>
         <div class="lyrics"><%= post.lyrics %></div>
         <% if current_user == @user %>
           <div class="song-buttons">
-            <%= link_to 'Открыть', post %>
-            <%= link_to 'Редактировать', edit_post_path(post) %>
-            <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' } %>
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Вы уверены?' } %>
           </div>
         <% end %>
       </div>

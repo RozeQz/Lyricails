@@ -1,13 +1,13 @@
-<% provide :page_title, 'Пользователи' %>
-<% currently_at 'Пользователи' %>
+<% provide :page_title, 'Users' %>
+<% currently_at 'Users' %>
 
-<h1>Пользователи</h1><br/>
+<h1>Users</h1><br/>
 
 <table class="w-100">
   <thead>
     <tr class="row">
-      <th class="col-2">Имя пользователя</th>  <%# для того, чтобы убедиться, что пароль нельзя украсть %>
-      <th class="col-2">Последний вход на сайт</th>
+      <th class="col-2">Username</th>  <%# для того, чтобы убедиться, что пароль нельзя украсть %>
+      <th class="col-2">Last online</th>
       <th class="col-1"></th>
     </tr>
   </thead>
@@ -29,7 +29,7 @@
           <% end %>
         <% end %>
         </td>
-        <td class="col-1"><%= link_to 'Посмотреть', user %></td>
+        <td class="col-1"><%= link_to 'Visit', user %></td>
       </tr>
     <% end %>
   </tbody>

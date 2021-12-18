@@ -1,11 +1,11 @@
-<% provide :page_title, 'Моя коллекция' %>
-<% currently_at 'Моя коллекция' %>
+<% provide :page_title, 'My collection' %>
+<% currently_at 'My collection' %>
 
 <% if user_signed_in? %>
 
-  <h1>Моя коллекция</h1>
+  <h1>My collection</h1>
 
-  <% current_user.find_voted_items.each do |post| %>
+  <% current_user.find_voted_items.reverse.each do |post| %>
     <div class="post-container" id="post-<%= post.id %>">
       <p><strong><%= post.user.username %></strong> published: </p>
       <div class="audio-container">
@@ -27,7 +27,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading<%= post.id %>">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= post.id %>" aria-expanded="true" aria-controls="flush-collapse<%= post.id %>">
-                Текст композиции
+                Song lyrics
               </button>
             </h2>
             <div id="flush-collapse<%= post.id %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= post.id %>">

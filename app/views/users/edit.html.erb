@@ -1,4 +1,4 @@
-<% provide :page_title, 'Настройки' %>
+<% provide :page_title, 'Settings' %>
 <% currently_at current_user.username %>
 
 <style>
@@ -11,6 +11,6 @@
 
 <%= render 'shared/errors', object: @user %>
 
-<h1 class="registration-label">Редактировать пользователя</h1>
+<h1 class="registration-label">Editing user</h1>
 
 <%= render 'form', user: @user %>

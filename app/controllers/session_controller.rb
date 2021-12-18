@@ -18,7 +18,7 @@ class SessionController < ApplicationController
       redirect_to root_path
     else
       p 'REDIRECT'
-      flash[:danger] = 'Неверный логин и/или пароль'
+      flash[:danger] = 'Incorrect login and/or password'  # 'Неверный логин и/или пароль'
       redirect_to session_login_path
     end
   end

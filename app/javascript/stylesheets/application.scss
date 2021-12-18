@@ -9,12 +9,21 @@
   }
 }
 
+.user-link{
+  text-decoration: none;
+}
+
 .user-posts-count{
   margin-bottom: 15px;
 }
 
+.post-header{
+  justify-content: space-between;
+}
+
 .post-buttons{
   display: flex;
+  margin-right: 10px;
 }
 
 .post-like:hover{
@@ -22,8 +31,7 @@
 }
 
 .post-button{
-  margin: auto;
-  width: 100px;
+  height: 25px;
 }
 
 .user-buttons{
@@ -65,8 +73,8 @@
 }
 
 .post-container{
-  background: #eeeeee;
-  width: 50%;
+  max-width: 600px;
+  min-width: 300px;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 10px;
@@ -77,12 +85,15 @@
 }
 
 .audio-container{
-  width: 600px;
+  max-width: 600px;
+  min-width: 300px;
   box-shadow: 0 4px 8px -4px rgba(0,0,0,0.3);
   position: relative;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .audio-container .like-section{
@@ -103,13 +114,14 @@
   height: 76px;
   justify-content: center;
   display: flex;
-}
+} 
 
 .audio-container .track-header{
   position: absolute;
   color: #fff;
   background-color: rgba(0,0,0,0.7);
-  width: 600px;
+  // width: 600px;
+  width: 100%;
   padding: 8px 32px;
   border-radius: 10px;
   font-size: 13px;

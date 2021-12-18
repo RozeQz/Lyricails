@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html do
-          flash[:success] = 'Параметры пользователя были успешно обновлены.'
+          flash[:success] = 'User updated successfully' # 'Параметры пользователя были успешно обновлены.'
           redirect_to @user
         end
         format.json { render :show, status: :ok, location: @user }

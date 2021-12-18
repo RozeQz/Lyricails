@@ -3,7 +3,6 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
   has_many :posts, dependent: :destroy
-  # has_many :likes, dependent: :destroy
   has_one_attached :avatar
 
   acts_as_voter
@@ -30,11 +29,11 @@ class User < ApplicationRecord
                        uniqueness: { message: 'Пользователь с таким именем уже зарегистрирован.' }
 
   def formatted_created_at
-    created_at.strftime('%d.%m.%Y %T %Z')
+    created_at.strftime('%d.%m.%Y %T')
   end
 
   def formated_last_login_at
-    last_login_at.strftime('%d.%m.%Y %T %Z')
+    last_login_at.strftime('%d.%m.%Y %T')
   end
 
   def avatar_thumbnail(size = 300)
