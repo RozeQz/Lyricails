@@ -133,3 +133,33 @@
 .audio-container .audio .music-bar {
   width: 100%
 }
+
+.flag {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background: url('../../assets/images/flags.png') no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+
+.ru-flag {
+  background-position: -1px -0px;
+
+}
+.en-flag {
+  background-position: -1px -17px;
+}
+
+.nav {
+  .flag {
+    position: relative;
+    top: 2px;
+  }
+  .upload-buttom-section{
+    height: 40px;
+    position: relative;
+    top: 2px;
+  }
+}
