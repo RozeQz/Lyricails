@@ -5,12 +5,13 @@
 
 <% @posts.each do |post| %>
   <div class="post-container" id="post-<%= post.id %>">
+  <hr/>
     <div class="post-header d-flex">
       <div><strong><a href="<%= user_path(post.user.id) %>" class="user-link" ><%= post.user.username %></a></strong></div>
       <% if post.user_id == current_user&.id %>
         <div class="post-buttons">
           <div class="post-button"><%= link_to t('global.buttons.edit'), edit_post_path(post), class: 'btn btn-success btn-sm' %></div>
-          <div class="post-button"><%= link_to t('global.buttons.delete'), post, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: t('global.confirmation') } %></div>
+          <div class="post-button destroy-post" id="<%= post.id %>"><button class="btn btn-danger btn-sm"><%= t('global.buttons.delete') %></button></div>
         </div>
       <% end %> 
     </div>
@@ -42,6 +43,5 @@
         </div>
       </div>
     <% end %>
-    <hr/>
   </div>
 <% end %>

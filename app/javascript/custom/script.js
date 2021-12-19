@@ -1,3 +1,17 @@
+jQuery(function($) {
+  $('.destroy-post').on('click', function(){
+    if (confirm('Are you sure?')){
+      $.ajax({
+        url: '/posts/'+ $(this).attr('id'),
+        method: 'DELETE'
+      }).done(function(response){
+        console.log(response);
+      })
+    }
+  })
+});
+
+
 // jQuery(function($) {
 //   $(".post-like").on("click", function(){
 //     $.ajax({

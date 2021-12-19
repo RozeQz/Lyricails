@@ -9,6 +9,18 @@
   }
 }
 
+.accordion-flush .accordion-item .accordion-button {
+	background-color: #222222;
+  color: white;
+  font-size: 14px;
+}
+
+.accordion-collapse{
+  background-color: #222222;
+  color: white;
+  font-size: 16px;
+}
+
 .user-link{
   text-decoration: none;
   color: black;
@@ -24,15 +36,11 @@
 
 .post-buttons{
   display: flex;
-  margin-right: 10px;
+  // margin-right: 10px;
 }
 
 .post-like:hover{
   cursor: pointer;
-}
-
-.post-button{
-  height: 25px;
 }
 
 .user-buttons{
@@ -90,11 +98,8 @@
   min-width: 300px;
   box-shadow: 0 4px 8px -4px rgba(0,0,0,0.3);
   position: relative;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
   overflow: hidden;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
 }
 
 .audio-container .like-section{
