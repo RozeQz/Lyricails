@@ -1,13 +1,13 @@
-jQuery(function($) {
-  $(".post-like").on("click", function(){
-    $.ajax({
-      url: '/post/like/'+$(this).data("id"),
-      method: 'GET'
-    }).done(function(response){
-      console.log(response);
-    })
-  })
-});
+// jQuery(function($) {
+//   $(".post-like").on("click", function(){
+//     $.ajax({
+//       url: '/post/like/'+$(this).data("id"),
+//       method: 'GET'
+//     }).done(function(response){
+//       console.log(response);
+//     })
+//   })
+// });
 
 //const track = document.querySelector('#track');
 

@@ -1,13 +1,13 @@
-<% provide :page_title, 'Users' %>
-<% currently_at 'Users' %>
+<% provide :page_title, t('menu.users') %>
+<% currently_at t('.title') %>
 
-<h1>Users</h1><br/>
+<h1><%= t('.title') %></h1><br/>
 
 <table class="w-100">
   <thead>
     <tr class="row">
-      <th class="col-2">Username</th>  <%# для того, чтобы убедиться, что пароль нельзя украсть %>
-      <th class="col-2">Last online</th>
+      <th class="col-2"><%= t('.username') %></th>
+      <th class="col-2"><%= t('.last_login_at') %></th>
       <th class="col-1"></th>
     </tr>
   </thead>
@@ -21,15 +21,15 @@
           <span class="badge badge-pill alert-success">Online</span>
         <% else %>
           <% if user.last_login_at > 8.hours.ago %>
-            <%= user.last_login_at.nil? ? "Never signed in" : time_ago_in_words(user.last_login_at) %> ago
+            <%= user.last_login_at.nil? ? "Never signed in" : time_ago_in_words(user.last_login_at) %> <%= t('.ago') %>
           <% else %>
             <time datetime="<%= user.last_login_at unless user.last_login_at.nil? %>">
-              <%= user.formated_last_login_at %>
+              <%= l user.last_login_at, format: :long %>
             </time>
           <% end %>
         <% end %>
         </td>
-        <td class="col-1"><%= link_to 'Visit', user %></td>
+        <td class="col-1"><%= link_to t('global.buttons.visit'), user %></td>
       </tr>
     <% end %>
   </tbody>

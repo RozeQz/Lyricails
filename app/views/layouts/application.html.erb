@@ -16,19 +16,6 @@
     <%# <script src="https://unpkg.com/wavesurfer.js"></script> %>
     <%# <script src="../../javascript/custom/wave.js" type="module"></script> %>
 
-    <script>
-      jQuery(function($) {
-        $(".post-like").on("click", function(){
-          $.ajax({
-            url: '/post/like/'+$(this).data("id"),
-            method: 'GET'
-          }).done(function(response){
-            console.log(response);
-          })
-        })
-      })
-    </script>
-
     <style>
     .main-container{
       margin-bottom: 70px;

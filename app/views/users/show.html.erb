@@ -22,19 +22,19 @@
 
     <div class="user-typed-info">
       <div class="info-item">
-        <strong>Email:</strong>
+        <strong><%= t('.email') %></strong>
         <%= @user.email %>
       </div>
 
       <div class="info-item">
-        <strong>Account registrated:</strong>
-        <time datetime="<%= @user.formatted_created_at %>">
-          <%= @user.formatted_created_at %>
+        <strong><%= t('.registrated') %></strong>
+        <time datetime="<%= @user.created_at %>">
+          <%= l @user.created_at, format: :long %>
         </time>
       </div>
 
       <div class="info-item">
-        <strong>Last online:</strong>
+        <strong><%= t('.online') %></strong>
         <% if @online_users&.index(@user) %>
           <span class="badge alert-success">Online</span>
         <% else %>
@@ -42,32 +42,32 @@
             <%= @user.last_login_at.nil? ? "Never signed in" : time_ago_in_words(@user.last_login_at) %> ago
           <% else %>
             <time datetime="<%= @user.last_login_at unless @user.last_login_at.nil? %>">
-              <%= @user.formated_last_login_at %>
+              <%= l @user.last_login_at, format: :long %>
             </time>
           <% end %>
-        <% end %>
+        <% end %> 
       </div>
     </div>
 
     <% if current_user == @user %>
       <div class="user-buttons">
-        <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-outline-primary me-3" %>
-        <%= link_to 'Delete account', @user, class: "btn btn-outline-danger me-2", method: :delete, data: { confirm: 'Вы уверены?' } %>
+        <%= link_to t('global.buttons.edit'), edit_user_path(@user), class: "btn btn-outline-primary me-3" %>
+        <%= link_to t('.delete_account'), @user, class: "btn btn-outline-danger me-2", method: :delete, data: { confirm: 'Вы уверены?' } %>
       </div>
     <% end %>
   </div>
 
   <div class="user-songs">
-  <h1> Публикации </h1><br/>
-    <div class="user-posts-count">Published: <%= pluralize( @user.posts.count, 'track', plural: 'tracks', locale: :en ) %></div>
+  <h1><%= t('.posts.title') %></h1>
+    <div class="user-posts-count"><%= t('.published') %><%= I18n.t('users.show.posts', count: @user.posts.count) %></div>
     <% @user.posts.each do |post| %>
       <div class="song" onClick="">
         <p class="title"><%= post.title %></p>
         <div class="lyrics"><%= post.lyrics %></div>
         <% if current_user == @user %>
           <div class="song-buttons">
-            <%= link_to 'Edit', edit_post_path(post) %>
-            <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Вы уверены?' } %>
+            <%= link_to t('global.buttons.edit'), edit_post_path(post) %>
+            <%= link_to t('global.buttons.delete'), post, method: :delete, data: { confirm: t('global.confirmation') } %>
           </div>
         <% end %>
       </div>

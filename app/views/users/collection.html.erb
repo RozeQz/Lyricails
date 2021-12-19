@@ -1,13 +1,13 @@
-<% provide :page_title, 'My collection' %>
-<% currently_at 'My collection' %>
+<% provide :page_title, t('.title') %>
+<% currently_at t('menu.collection') %>
 
 <% if user_signed_in? %>
 
-  <h1>My collection</h1>
+  <h1><%= t('.feed') %></h1>
 
   <% current_user.find_voted_items.reverse.each do |post| %>
     <div class="post-container" id="post-<%= post.id %>">
-      <p><strong><%= post.user.username %></strong> published: </p>
+      <div><strong><a href="<%= user_path(post.user.id) %>" class="user-link" ><%= post.user.username %></a></strong></div>
       <div class="audio-container">
         <div class="track-header">
           <div class="track-name"> <%= post.title %> </div>
@@ -27,7 +27,7 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading<%= post.id %>">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= post.id %>" aria-expanded="true" aria-controls="flush-collapse<%= post.id %>">
-                Song lyrics
+                <%= t('.lyrics') %>
               </button>
             </h2>
             <div id="flush-collapse<%= post.id %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= post.id %>">

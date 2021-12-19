@@ -11,8 +11,7 @@ class UsersController < ApplicationController
     @online_users = User.where('last_login_at > ?', 3.minutes.ago)
   end
 
-  def collection
-  end
+  def collection; end
 
   # GET /users/1 or /users/1.json
   def show
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html do
-          flash[:success] = 'User updated successfully' # 'Параметры пользователя были успешно обновлены.'
+          flash[:success] = t('.success')
           redirect_to @user
         end
         format.json { render :show, status: :ok, location: @user }

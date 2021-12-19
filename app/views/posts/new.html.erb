@@ -1,6 +1,6 @@
-<% provide :page_title, 'New post' %>
-<% currently_at 'Home' %>
+<% provide :page_title, t('.title') %>
+<% currently_at t('menu.home') %>
 
-<h1>New Post</h1>
+<h1><%= t('.title') %></h1>
 
 <%= render 'form', post: @post %>

@@ -23,13 +23,13 @@
 <%= render 'shared/errors', object: @user %>
 
 <div class="container">
-  <h1 class="text-center registration-label">Регистрация</h1>
+  <h1 class="text-center registration-label"><%= t('.title') %></h1>
 
   <%= render 'form', user: @user %>
 
   <p class="text-dark text-center pt-3">
-    Already have an account?  <%#Уже есть аккаунт?%>
-    <a class="text-link" href="/session/login">Log in!</a>
+    <%= t('.label') %>
+    <a class="text-link" href="/session/login"><%= t('.login') %></a>
   </p>
 </div>
 

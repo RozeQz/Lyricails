@@ -1,6 +1,6 @@
-<% provide :page_title, 'Edit' %>
-<% currently_at 'Home' %>
+<% provide :page_title, t('.title') %>
+<% currently_at t('menu.home') %>
 
-<h1>Editing Post</h1>
+<h1><%= t('.head') %></h1>
 
 <%= render 'form', post: @post %>

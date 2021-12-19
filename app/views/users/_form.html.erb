@@ -1,24 +1,24 @@
-<%= form_with model: user, html: {multipart: true}, class: 'col-4 form-settings' do |form| %>
+<%= form_with model: user, html: {multipat: true}, class: 'col-4 form-settings' do |form| %>
 
-  <% user.add_default_avatar %>
+<% user.add_default_avatar %>
 
   <% unless user.new_record? %>
     <div class="form-group pb-3">
       <% if user.avatar.attached? %>
         <%= image_tag user.avatar.variant(resize: "300x300!").processed %>
       <% else %>
-        <%# <%= image_tag '../../assets/images/default_avatar.jpg' %> %>
+        <%= image_tag '../../assets/images/default_avatar.jpg' %>
       <% end %>
     </div>
 
     <div class="form-group pb-3 d-flex">
-      <%= form.file_field :avatar, direct_upload: true, class: 'form-control' %>
-      <button class="form-control w-25 btn-danger btn", onClick="<%= user.avatar.purge %>">Удалить</button>
+      <%= form.file_field :avatar, direct_upload: true, class: 'form-control'%>
+      <button class="form-control w-25 btn-danger btn", onClick="<%= user.avatar.purge %>"><%= t('global.buttons.delete') %></button>
     </div>
   <% end %>
 
   <div class="form-group pb-3 pt-10">
-    <%= form.text_field :username, placeholder: 'Username', class: 'form-control', required: true%>
+    <%= form.text_field :username, placeholder: t('.username'), class: 'form-control', required: true%>
   </div>
 
   <div class="form-group pb-3">
@@ -27,26 +27,26 @@
 
   <div class="form-group pb-3">
   <% if user.new_record? %>
-    <%= form.password_field :password, placeholder: 'Password', class: 'form-control', required: true%>
+    <%= form.password_field :password, placeholder: t('.password'), class: 'form-control', required: true%>
   <% else %>
-    <%= form.password_field :password, placeholder: 'Password', class: 'form-control' %>
+    <%= form.password_field :password, placeholder: t('.password'), class: 'form-control' %>
   <% end %>
   </div>
 
   <div class="form-group pb-3">
-    <%= form.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control' %>
+    <%= form.password_field :password_confirmation, placeholder: t('.password_confirmation'), class: 'form-control' %>
   </div>
 
   <% unless user.new_record? %>
     <div class="form-group pb-3">
-      <%= form.password_field :old_password, placeholder: 'Old password', class: 'form-control' %>
+      <%= form.password_field :old_password, placeholder: t('.old_password'), class: 'form-control' %>
     </div>
   <% end %>
 
-  <div class="d-flex justify-content-space-between">
+  <div class="d-flex m-auto">
 
-    <div class="form-group pb-3 mt-3 form-button">
-        <%= form.submit (user.new_record? ? 'Registrate' : 'Save'), class: 'btn btn-primary me-4' %>
+    <div class="form-group mt-3 form-button">
+        <%= form.submit (user.new_record? ? t('global.buttons.register') : t('global.buttons.save')), class: 'btn btn-primary' %>
     </div>
 
   </div>

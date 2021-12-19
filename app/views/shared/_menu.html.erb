@@ -13,12 +13,12 @@
           </svg>
         </a>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li><%= nav_tab 'Home', root_path,
+          <li><%= nav_tab t('menu.home'), root_path,
             { class: 'nav-link px-2', current_page: current_page } %></li>
           <% if user_signed_in? %>
-            <li><%= nav_tab 'Users', users_path,
+            <li><%= nav_tab t('menu.users'), users_path,
               { class: 'nav-link px-2', current_page: current_page } %></li>
-            <li><%= nav_tab 'My collection', collection_user_path(current_user),
+            <li><%= nav_tab t('menu.collection'), collection_user_path(current_user),
               { class: 'nav-link px-2', current_page: current_page } %></li>
           <% end %>
         </ul>
@@ -27,17 +27,17 @@
           <ul class="nav">
             <% if user_signed_in? %>
               <%# <button type="button" class="btn btn-outline-primary me-2" onClick='location.href="/session/logout"'>Выйти</button> %>
-              <%= link_to 'Upload', new_post_path, class: 'btn btn-outline-primary me-3' %>
+              <%= link_to t('global.buttons.upload'), new_post_path, class: 'btn btn-outline-primary me-3' %>
               <li class="dropdown" id="dropdownMenuLink">
                 <%= nav_tab current_user.username, '#',
                     class: 'nav-link px-2 dropdown-toggle',
                     data: {'bs-toggle': 'dropdown'}, current_page: current_page %>
                 
                 <ul class="dropdown-menu text-end dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                  <li><%= link_to 'Profile', current_user, class: 'dropdown-item' %></li>
-                  <li><%= link_to 'Settings', edit_user_path(current_user), class: 'dropdown-item' %></li>
+                  <li><%= link_to t('global.profile'), current_user, class: 'dropdown-item' %></li>
+                  <li><%= link_to t('global.settings'), edit_user_path(current_user), class: 'dropdown-item' %></li>
                   <li class="dropdown-divider"></li>  
-                  <li><%= link_to 'Sign out', session_logout_path, class: 'dropdown-item' %></li>
+                  <li><%= link_to t('global.sing_out'), session_logout_path, class: 'dropdown-item' %></li>
                 </ul>
 
               </li>

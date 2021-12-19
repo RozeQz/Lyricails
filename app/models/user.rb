@@ -16,33 +16,16 @@ class User < ApplicationRecord
   validate :correct_old_password, on: :update, if: -> { password.present? }
   validate :password_complexity
 
-  validates :password, confirmation: { message: 'Пароли не совпадают.' },
+  validates :password, confirmation: { message: I18n.t('user.errors.password.confirmation') },
                        allow_blank: true,
-                       length: { minimum: 6, maximum: 70, message: 'Пароль слишком короткий,
-                                                                   минимальная длина - 6 символов.' }
+                       length: { minimum: 6, maximum: 70, message: I18n.t('user.errors.password.length') }
 
-  validates :email, presence: { message: 'Пожалуйста, введите электронную почту.' },
-                    uniqueness: { message: 'Пользователь с такой электронной почтой уже зарегистрирован.' },
-                    format: { with: /\A[^@\s]+@[^@\s]+\z/, message: 'Введена некорректная электронная почта.' }
+  validates :email, presence: { message: I18n.t('user.errors.email.presence') },
+                    uniqueness: { message: I18n.t('user.errors.email.uniqueness') },
+                    format: { with: /\A[^@\s]+@[^@\s]+\z/, message: I18n.t('user.errors.email.format') }
   # validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
-  validates :username, presence: { message: 'Пожалуйста, введите имя пользователя.' },
-                       uniqueness: { message: 'Пользователь с таким именем уже зарегистрирован.' }
-
-  def formatted_created_at
-    created_at.strftime('%d.%m.%Y %T')
-  end
-
-  def formated_last_login_at
-    last_login_at.strftime('%d.%m.%Y %T')
-  end
-
-  def avatar_thumbnail(size = 300)
-    if avatar.attached?
-      avatar.variant(resize: "#{size}x#{size}!").processed
-    else
-      '../assets/images/default_avatar.jpg'
-    end
-  end
+  validates :username, presence: { message: I18n.t('user.errors.username.presence') },
+                       uniqueness: { message: I18n.t('user.errors.username.uniqueness') }
 
   def add_default_avatar
     unless avatar.attached?
@@ -63,14 +46,14 @@ class User < ApplicationRecord
   def correct_old_password
     return if BCrypt::Password.new(password_digest_was).is_password?(old_password)
 
-    errors.add :old_password, 'Введен неверный старый пароль.'
+    errors.add :old_password, message: I18n.t('user.errors.password.old_password')
   end
 
   def password_complexity
     # Regexp extracted from https://stackoverflow.com/questions/19605150/regex-for-password-must-contain-at-least-eight-characters-at-least-one-number-a
     return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])/
 
-    errors.add :password, message: 'Пароль должнен содержать хотя бы: 1 прописную букву, 1 строчную букву и 1 цифру.'
+    errors.add :password, message: I18n.t('user.errors.password.complexity')
   end
 
   def password_presence

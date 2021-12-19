@@ -2,12 +2,12 @@
 
   <div class="form-group pb-3">
     <%= form.label :title %>
-    <%= form.text_field :title, placeholder: 'Title', class: 'form-control', required: true %>
+    <%= form.text_field :title, placeholder: t('.song_title'), class: 'form-control', required: true %>
   </div>
 
   <div class="form-group pb-3">
     <%= form.label :lyrics %>
-    <%= form.text_area :lyrics, placeholder: 'Song lyrics', class: 'form-control', rows: '18' %>
+    <%= form.text_area :lyrics, placeholder: t('.lyrics'), class: 'form-control', rows: '18' %>
   </div>
 
   <div class="form-group pb-3">
@@ -15,9 +15,9 @@
   </div>
 
   <div class="form-group pb-3 mt-3 form-button">
-    <%= form.submit (post.new_record? ? 'Post' : 'Save'), class: 'btn btn-primary' %>
+    <%= form.submit (post.new_record? ? t('global.buttons.post') : t('global.buttons.save')), class: 'btn btn-primary' %>
   </div>
   
 <% end %>
 
-<%= link_to 'Cancel', posts_path, class: 'btn btn-outline-danger' %>
+<%= link_to t('global.buttons.cancel'), posts_path, class: 'btn btn-outline-danger' %>

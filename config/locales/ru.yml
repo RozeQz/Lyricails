@@ -1,0 +1,130 @@
+ru:
+  en: Английский
+  ru: Русский
+
+  activerecord:
+    attributes:
+      post:
+        title: Название
+        lyrics: Текст композиции
+        created_at: Создан
+        updated_at: Обновлён
+      user: 
+        username: Имя пользователя
+        email: Электронная почта
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        old_password: Старый пароль
+        created_at: Создан
+        updated_at: Обновлён
+        last_login_at: Последний раз в сети
+    models:
+      user: Пользователь
+      post: Публикация
+
+  menu:
+    home: Главная
+    users: Пользователи
+    collection: Моя коллекция
+
+  posts:
+    edit:
+      title: Редактировать
+      head: Редактировать публикацию
+    index:
+      title: Главная
+      feed: Лента
+      lyrics: Текст композиции
+    new:
+      title: Новая публикация
+    form:
+      song_title: Название
+      lyrics: Текст композиции
+    update:
+      success: Публикция была успешно обновлена.
+    create:
+      success: Публикция была успешно создана.
+    destroy:
+      success: Публикция была успешно удалена.
+
+  session:
+    create:
+      error: Неверный логин и/или пароль
+    login: 
+      form:
+        title: Вход
+        login: Войти
+        username: Имя пользователя
+        password: Пароль
+        register: Зарегистрируйся!
+      label: Еще нет профиля?
+  
+  users:
+    index:
+      title: Пользователи
+      username: Имя пользователя
+      last_login_at: Последний раз в сети
+      ago: назад
+    new:
+      title: Регистрация
+      label: Уже есть аккаунт?
+      login: Войдите!
+    form:
+      username: Имя пользователя
+      password: Пароль
+      password_confirmation: Подтверждение пароля
+      old_password: Старый пароль
+    show:
+      email: 'Электронна почта: '
+      registrated: 'Пользователь зарегистрирован: '
+      online: 'Последний раз в сети: '
+      published: 'Опубликовано: '
+      delete_account: 'Удалить аккаунт'
+      posts: 
+        title: Публикации
+        zero: "%{count} публикаций"
+        one: "%{count} публикация"
+        few: "%{count} публикации"
+        other: "%{count} публикаций"
+    collection:
+      title: Моя коллекция
+      feed: Моя коллекция
+      lyrics: Текст композиции
+    update:
+      success: Параметры пользователя были успешно обновлены.
+    
+  user:
+    errors:
+      password:
+        confirmation: Пароли не совпадают.
+        old_password: Введен неверный старый пароль.
+        complexity: 'Пароль должнен содержать хотя бы: 1 прописную букву, 1 строчную букву и 1 цифру.'
+        length: Пароль слишком короткий, минимальная длина - 6 символов.
+      email: 
+        presence: Пожалуйста, введите электронную почту.
+        uniqueness: Пользователь с такой электронной почтой уже зарегистрирован.
+        format: Введена некорректная электронная почта.
+      username:
+        presence: Пожалуйста, введите имя пользователя.
+        uniqueness: Пользователь с таким именем уже зарегистрирован.
+      avatar: 
+        presence: Аватар должен быть загружен или удален.
+
+  global:
+    profile: Профиль
+    settings: Настройки
+    sing_out: Выйти
+    confirmation: Вы уверены?
+    forms:
+      registrate: Зарегистрироваться
+      save: Сохранить
+      login: Войти
+    buttons:
+      register: Зарегистрироваться
+      save: Сохранить
+      cancel: Отменить
+      edit: Редактировать
+      visit: Перейти
+      upload: Загрузить
+      post: Опубликовать
+      deletes: Удалить

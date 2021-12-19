@@ -1,33 +1,125 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  en: English
+  ru: Russian
+
+  activerecord:
+    attributes:
+      post:
+        title: Title
+        lyrics: Lyrics
+        created_at: Created at
+        updated_at: Updated at
+      user: 
+        username: Username
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        old_password: Old password
+        created_at: Created at
+        updated_at: Updated at
+        last_login_at: Last online
+    models:
+      user: User
+      post: Post
+
+  menu:
+    home: Home
+    users: Users
+    collection: My collection
+
+  posts:
+    edit:
+      title: Edit
+      head: Edit post
+    index:
+      title: Home
+      feed: Feed
+      lyrics: Song lyrics
+    new:
+      title: New post
+    form:
+      song_title: Title
+      lyrics: Song lyrics
+    update:
+      success: Post was successfully updated.
+    create:
+      success: Post was successfully created.
+    destroy:
+      success: Post was successfully destroyed.
+
+  session:
+    create:
+      error: Incorrect login and/or password
+    login: 
+      form:
+        title: Log in
+        login: Log in
+        username: Username
+        password: Password
+        registrate: Register!
+      label: No account yet?
+  
+  users:
+    index:
+      title: Users
+      username: Username
+      last_login_at: Last online
+      ago: ago
+    new:
+      title: Registration
+      label: Already have an account?
+      login: Log in!
+    form:
+      username: Username
+      password: Password
+      password_confirmation: Password confirmation
+      old_password: Old password
+    show:
+      email: 'Email: '
+      registrated: 'Account registrated: '
+      online: 'Last online: '  
+      published: 'Published: '
+      delete_account: 'Delete account'
+      posts: 
+        title: Posts
+        zero: "%{count} posts"
+        one: "%{count} post"
+        other: "%{count} posts"
+    update:
+      success: User was successfully updated.
+
+  user:
+    errors:
+      password:
+        confirmation: Password confirmation does not match password.
+        old_password: Old password is incorrect.
+        complexity: 'Password length should be 6-70 charachters and include: 1 uppercase, 1 lowercase and 1 digit'
+        length: Password is too short (minimum is 6 characters).
+      email: 
+        presence: Please, enter your email.
+        uniqueness: User with this email already exists.
+        format: Email is incorrect
+      username:
+        presence: Please, enter your username.
+        uniqueness: User with this username already exists.
+      avatar: 
+        presence: Avatar should be uploaded or deleted.
+  
+  global:
+    profile: Profile
+    settings: Settings
+    sing_out: Sing out
+    confirmation: Are you sure?
+    forms:
+      registrate: Registrate
+      save: Save
+      login: Log in
+    buttons:
+      register: Register
+      save: Save
+      cancel: Cancel
+      edit: Edit
+      visit: Visit
+      upload: Upload
+      post: Post
+      delete: Delete
