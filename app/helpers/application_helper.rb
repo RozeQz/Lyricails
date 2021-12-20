@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def full_title(page_title = '')
-    base_title = 'Trackity'
+    base_title = 'Lyricails'
     if page_title.present?
       "#{page_title} | #{base_title}"
     else

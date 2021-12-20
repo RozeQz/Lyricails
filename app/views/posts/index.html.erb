@@ -11,16 +11,21 @@
       <% if post.user_id == current_user&.id %>
         <div class="post-buttons">
           <div class="post-button"><%= link_to t('global.buttons.edit'), edit_post_path(post), class: 'btn btn-success btn-sm' %></div>
-          <div class="post-button destroy-post" id="<%= post.id %>"><button class="btn btn-danger btn-sm"><%= t('global.buttons.delete') %></button></div>
+          <div class="post-button" id="destroy-post"><%= link_to t('global.buttons.delete'), post, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: t('global.confirmation') }, remote: true %></div>
         </div>
       <% end %> 
     </div>
     <div class="audio-container song-<%= post.id %>">
       <div class="track-header">
         <div class="track-name"> <%= post.title %> </div>
-        <div class="like-section">
-          <div class="like-item"><%= render "posts/votes_score", post: post %></div>
-          <div class="like-item"><%= render "posts/upvote_link", post: post %></div>
+        <div class="track-options">
+          <div class="like-section">
+            <div class="like-item"><%= render "posts/votes_score", post: post %></div>
+            <div class="like-item"><%= render "posts/upvote_link", post: post %></div>
+          </div>
+          <%# <div class="options-section">
+            <i class="fas fa-times"></i>
+          </div> %>
         </div>
       </div>
       <div class="audio">

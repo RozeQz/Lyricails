@@ -29,6 +29,11 @@ gem 'gravatar_image_tag', '~> 1.2'
 gem 'mini_magick', '~> 4.11'
 gem 'acts_as_votable', '~> 0.13.2'
 gem 'rails-i18n', '~> 6.0'
+gem 'draper', '~> 4.0'
+gem 'faker', '~> 2.0'
+gem 'rexml'
+gem 'rubocop'
+gem 'valid_email2', '~> 4.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

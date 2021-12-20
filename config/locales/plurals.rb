@@ -2,7 +2,7 @@
   { :i18n => 
     { :plural => 
       { :keys => [:zero, :one, :few, :many],
-        :rule => lambda { |n| 
+        :rule => lambda { |n|
           if n == 0
             :zero
           elsif
@@ -20,8 +20,8 @@
             # 0, 5-20, 25-30, 35-40...
             :many
           end
-        } 
-      } 
-    } 
-  } 
+        }
+      }
+    }
+  }
 }

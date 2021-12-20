@@ -80,11 +80,16 @@ en:
       online: 'Last online: '  
       published: 'Published: '
       delete_account: 'Delete account'
+      lyrics: Song lyrics
       posts: 
         title: Posts
         zero: "%{count} posts"
         one: "%{count} post"
         other: "%{count} posts"
+      collection:
+        title: Моя коллекция
+        feed: Моя коллекция
+        lyrics: Текст композиции
     update:
       success: User was successfully updated.
 

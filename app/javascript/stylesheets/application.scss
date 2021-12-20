@@ -36,7 +36,6 @@
 
 .post-buttons{
   display: flex;
-  // margin-right: 10px;
 }
 
 .post-like:hover{
@@ -49,40 +48,24 @@
 
 .user-info{
   width: 50%;
+  min-width: 300px;
 }
 
 .user-songs{
-  width: 75%;
+  width: 700px;
+  min-width: 560px;
   text-align: start;
+  
 }
 
 .user-page{
   display: flex;
   margin: auto;
-  justify-content: start;
-}
-
-.song{
-  background-color: #eeeeee;
-  padding: 8px 16px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.song .title{
-  font-weight: bold;
-}
-
-.song:hover{
-  background-color: #d6d6d6;
-}
-
-.song-buttons{
-  padding-top: 10px;
+  justify-content: space-between;
 }
 
 .post-container{
-  max-width: 600px;
+  max-width: 700px;
   min-width: 300px;
   border-radius: 10px;
   overflow: hidden;
@@ -94,7 +77,7 @@
 }
 
 .audio-container{
-  max-width: 600px;
+  max-width: 700px;
   min-width: 300px;
   box-shadow: 0 4px 8px -4px rgba(0,0,0,0.3);
   position: relative;
@@ -126,11 +109,10 @@
   position: absolute;
   color: #fff;
   background-color: rgba(0,0,0,0.7);
-  // width: 600px;
   width: 100%;
   padding: 8px 32px;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 15px;
   display: flex;
   justify-content: space-between;
 }

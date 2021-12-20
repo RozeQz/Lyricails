@@ -80,6 +80,7 @@ ru:
       online: 'Последний раз в сети: '
       published: 'Опубликовано: '
       delete_account: 'Удалить аккаунт'
+      lyrics: Текст композиции
       posts: 
         title: Публикации
         zero: "%{count} публикаций"

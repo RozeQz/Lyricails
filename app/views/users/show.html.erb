@@ -61,13 +61,43 @@
   <h1><%= t('.posts.title') %></h1>
     <div class="user-posts-count"><%= t('.published') %><%= I18n.t('users.show.posts', count: @user.posts.count) %></div>
     <% @user.posts.each do |post| %>
-      <div class="song" onClick="">
-        <p class="title"><%= post.title %></p>
-        <div class="lyrics"><%= post.lyrics %></div>
-        <% if current_user == @user %>
-          <div class="song-buttons">
-            <%= link_to t('global.buttons.edit'), edit_post_path(post) %>
-            <%= link_to t('global.buttons.delete'), post, method: :delete, data: { confirm: t('global.confirmation') } %>
+      <div class="post-container" id="post-<%= post.id %>">
+        <div class="post-header d-flex">
+          <% if current_user == @user %>
+            <div class="post-buttons">
+              <div class="post-button"><%= link_to t('global.buttons.edit'), edit_post_path(post), class: 'btn btn-success btn-sm' %></div>
+              <div class="post-button" id="destroy-post"><%= link_to t('global.buttons.delete'), post, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: t('global.confirmation') }, remote: true %></div>
+            </div>
+          <% end %> 
+        </div>
+        <div class="audio-container song-<%= post.id %>">
+          <div class="track-header">
+            <div class="track-name"> <%= post.title %> </div>
+            <div class="track-options">
+              <div class="like-section">
+                <div class="like-item"><%= render "posts/votes_score", post: post %></div>
+                <div class="like-item"><%= render "posts/upvote_link", post: post %></div>
+              </div>
+            </div>
+          </div>
+          <div class="audio">
+            <audio controls class="music-bar">
+              <source src="<%= rails_blob_url(post.music) %>" type="<%= post.music.content_type %>" >
+            </audio>
+          </div>
+        </div>
+        <% unless post.lyrics.empty? %>
+          <div class="accordion accordion-flush" id="accordionFlush">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-heading<%= post.id %>">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= post.id %>" aria-expanded="true" aria-controls="flush-collapse<%= post.id %>">
+                  <%= t('.lyrics') %>
+                </button>
+              </h2>
+              <div id="flush-collapse<%= post.id %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= post.id %>">
+                <div class="accordion-body"><pre><%= post.lyrics %></pre></div>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>

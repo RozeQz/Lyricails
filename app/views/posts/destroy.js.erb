@@ -1,0 +1,12 @@
+let deleteBtn = document.getElementById("destroy-post")
+console.log(deleteBtn)
+deleteBtn.addEventListener("ajax:success", delete_post());
+
+function delete_post() {
+  let postId = document.getElementById("post-<%= @post.id %>")
+  postId.remove();
+}
+
+<%# $('.destroy-post').bind('ajax:success', function(){
+  $(postId).remove()
+}) %>
