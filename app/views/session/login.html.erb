@@ -18,15 +18,15 @@
   <%= form_with url: session_create_url, class: 'col-4 d-flex flex-column justify-content-center m-auto', method: :post, local:true do |form| %>
 
     <div class="form-group pb-3 pt-10">
-      <%= form.text_field :username, placeholder: t('.form.username'), class: 'form-control', required: true%>
+      <%= form.text_field :username, placeholder: t('.form.username'), class: 'form-control', id: 'username_path', required: true %>
     </div>
 
     <div class="form-group pb-3">
-      <%= form.password_field :password, placeholder: t('.form.password'), class: 'form-control', required: true%>
+      <%= form.password_field :password, placeholder: t('.form.password'), class: 'form-control', id: 'password_path', required: true %>
     </div>
 
     <div class="form-group pt-3 pb-3 text-center">
-      <%= form.submit t('.form.login'), class: 'btn btn-primary' %>
+      <%= form.submit t('.form.login'), class: 'btn btn-primary', id: 'submit-btn' %>
     </div>
 
   <% end %>

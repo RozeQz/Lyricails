@@ -34,6 +34,7 @@ gem 'faker', '~> 2.0'
 gem 'rexml'
 gem 'rubocop'
 gem 'valid_email2', '~> 4.0'
+gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

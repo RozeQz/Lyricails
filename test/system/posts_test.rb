@@ -1,47 +1,23 @@
 require "application_system_test_case"
+require 'selenium-webdriver'
 
 class PostsTest < ApplicationSystemTestCase
   setup do
-    @post = posts(:one)
+    @driver = Capybara.current_session.driver.browser
   end
 
-  test "visiting the index" do
-    visit posts_url
-    assert_selector "h1", text: "Posts"
-  end
-
-  test "creating a Post" do
-    visit posts_url
-    click_on "New Post"
-
-    fill_in "Lyrics", with: @post.lyrics
-    fill_in "Title", with: @post.title
-    fill_in "User", with: @post.user_id
-    click_on "Create Post"
-
-    assert_text "Post was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a Post" do
-    visit posts_url
-    click_on "Edit", match: :first
-
-    fill_in "Lyrics", with: @post.lyrics
-    fill_in "Title", with: @post.title
-    fill_in "User", with: @post.user_id
-    click_on "Update Post"
-
-    assert_text "Post was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Post" do
-    visit posts_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "Post was successfully destroyed"
+  test 'checking app works vie selenium' do
+    User.create(
+      username: 'Test', email: 'test@example.com', 
+      password: 'S1cret', password_confirmation: 'S1cret'
+    )
+    @driver.get(session_login_url)
+    @driver.find_element(:id, 'username_path').click
+    @driver.find_element(:id, 'username_path').send_keys('Test')
+    @driver.find_element(:id, 'password_path').click
+    @driver.find_element(:id, 'password_path').send_keys('S1cret')
+    @driver.find_element(:id, 'submit-btn').click
+    Selenium::WebDriver::Wait.new(timeout: 10).until { @driver.title.start_with? I18n.t('menu.home') }
+    assert_redirected_to root_path
   end
 end
