@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    # @user.avatar.attach(params[:avatar]) unless params[:avatar].nil?
+    @user.avatar.attach(params[:avatar]) unless params[:avatar].nil?
     respond_to do |format|
       if @user.update(user_params)
         format.html do

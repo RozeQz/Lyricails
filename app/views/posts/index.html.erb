@@ -4,6 +4,7 @@
 <h1><%= t('.feed') %></h1>
 
 <% @posts.each do |post| %>
+  <% if post.music.attached? %>
   <div class="post-container" id="post-<%= post.id %>">
   <hr/>
     <div class="post-header d-flex">
@@ -49,4 +50,5 @@
       </div>
     <% end %>
   </div>
+  <% end %>
 <% end %>

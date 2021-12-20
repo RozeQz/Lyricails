@@ -14,7 +14,7 @@ module Project
     config.serve_static_assets = true
 
     config.i18n.available_locales = %i[en ru]
-    config.i18n.default_locale = :ru
+    config.i18n.default_locale = :en
     config.filter_parameters << :password
     config.time_zone = 'Moscow'
 

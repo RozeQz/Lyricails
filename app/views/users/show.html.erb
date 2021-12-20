@@ -9,15 +9,10 @@
     <div class="user-title">
       <h1><%= @user.username %></h1>
     </div>
-
+    
     <div class="user-avatar">
-      <%# image_tag @user.avatar.variant(resize: "100x100!").processed %>
-      <%# @user.add_default_avatar %>
-      <% if @user.avatar.attached? %>
-        <%= image_tag @user.avatar.variant(resize: "300x300!").processed  %>
-      <% else %>
-        <%= image_tag '/home/rozeqz/Рабочий стол/my_projects/project/app/assets/images/default_avatar.png'  %>
-      <% end %>
+      <% @user.add_default_avatar %>
+      <%= image_tag @user.avatar.variant(resize: "300x300!").processed if @user.avatar.attached? %>
     </div>
 
     <div class="user-typed-info">

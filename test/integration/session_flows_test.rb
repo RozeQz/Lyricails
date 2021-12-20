@@ -6,6 +6,11 @@ class SessionFlowsTest < ActionDispatch::IntegrationTest
   fixtures :users
   fixtures :posts
 
+  test 'unauthorized user can visit root path' do
+    get root_path
+    assert_response :success
+  end
+
   test 'unauthorized user will be redirected to login page' do
     get users_path
     assert_redirected_to controller: :session, action: :login
