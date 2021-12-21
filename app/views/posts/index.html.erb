@@ -12,7 +12,7 @@
       <% if post.user_id == current_user&.id %>
         <div class="post-buttons">
           <div class="post-button"><%= link_to t('global.buttons.edit'), edit_post_path(post), class: 'btn btn-success btn-sm' %></div>
-          <div class="post-button" id="destroy-post"><%= link_to t('global.buttons.delete'), post, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: t('global.confirmation') }, remote: true %></div>
+          <div class="post-button" id="destroy-post-<%= post.id %>"><%= link_to t('global.buttons.delete'), post, class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: t('global.confirmation') }, remote: true %></div>
         </div>
       <% end %> 
     </div>
