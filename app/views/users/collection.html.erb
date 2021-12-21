@@ -1,9 +1,9 @@
-<% provide :page_title, t('menu.collection') %>
+<% provide :page_title, t('.title') %>
 <% currently_at t('menu.collection') %>
 
 <% if user_signed_in? %>
 
-  <h1><%= t('.feed') %></h1>
+  <h1><%= t('.feed') %></h1><br/>
 
   <% current_user.find_voted_items.reverse.each do |post| %>
     <div class="post-container" id="post-<%= post.id %>">

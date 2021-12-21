@@ -25,7 +25,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 gem 'active_storage_validations', '~> 0.9.6'
-gem 'gravatar_image_tag', '~> 1.2'
 gem 'mini_magick', '~> 4.11'
 gem 'acts_as_votable', '~> 0.13.2'
 gem 'rails-i18n', '~> 6.0'
@@ -38,6 +37,7 @@ gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
 # gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'binding_of_caller', '~> 1.0'
 gem 'drb'
+gem 'paperclip', '~> 6.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

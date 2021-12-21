@@ -10,7 +10,7 @@ class User < ApplicationRecord
   after_commit :add_default_avatar, on: %i[create update]
   before_save :add_default_avatar
 
-  validates :avatar, content_type: %i[png jpg jpeg]
+  validates :avatar, content_type: %i[png jpg jpeg], size: { less_than: 5.megabytes }
 
   validate :password_presence
   validate :correct_old_password, on: :update, if: -> { password.present? }

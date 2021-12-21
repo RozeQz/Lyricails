@@ -1,29 +1,56 @@
 require "application_system_test_case"
-require 'selenium-webdriver'
-require 'drb/drb'
 
 class PostsTest < ApplicationSystemTestCase
   include SessionHelper
 
   setup do
-    @driver = Capybara.current_session.driver.browser
-    @user = User.create(
-      username: 'Test', email: 'test@example.com', 
-      password: 'S1cret', password_confirmation: 'S1cret'
-    )
-    # cookies[:remember_token] = nil
-    sign_in @user
-    # DRb.start_service()
+    @user = users(:one)
   end
 
-  test 'checking app works vie selenium' do
-    @driver.get(session_login_url)
-    @driver.find_element(:id, 'username_path').click
-    @driver.find_element(:id, 'username_path').send_keys('Test')
-    @driver.find_element(:id, 'password_path').click
-    @driver.find_element(:id, 'password_path').send_keys('S1cret')
-    @driver.find_element(:id, 'submit-btn').click
-    
-    Selenium::WebDriver::Wait.new(timeout: 100)
+  test 'visiting the root path with a guest' do
+    visit root_path
+    assert_selector 'h1', text: 'Feed'
   end
+
+  test 'redirect to root_path after login' do
+    visit session_login_path
+    fill_in 'username', with: users(:one).username
+    fill_in 'password', with: 'secret'
+    click_on 'submit-btn'
+    sleep 2
+    assert_selector 'h1', text: 'Feed'
+  end
+
+  test 'signed user can upload files' do
+    visit session_login_path
+    fill_in 'username', with: users(:one).username
+    fill_in 'password', with: 'secret'
+    click_on 'submit-btn'
+    assert_difference('@user.posts.count') do
+      click_on 'upload'
+      fill_in 'title', with: posts(:one).title
+      fill_in 'title', with: posts(:one).title
+      attach_file 'file', 'test/fixtures/files/GunsNRoses - ThisILove.mp3'
+      click_on 'submit-btn'
+      sleep 1
+    end
+  end
+
+  test 'signed user can like posts and see them in the collection' do
+    visit session_login_path
+    fill_in 'username', with: users(:one).username
+    fill_in 'password', with: 'secret'
+    click_on 'submit-btn'
+    click_on 'upload'
+    fill_in 'title', with: posts(:one).title
+    fill_in 'title', with: posts(:one).title
+    attach_file 'file', 'test/fixtures/files/GunsNRoses - ThisILove.mp3'
+    click_on 'submit-btn'
+    sleep 1
+    find(".like-btn", match: :first).click
+    sleep 1
+    click_on 'collection_page'
+    assert_selector '.track-name', text: posts(:one).title
+  end
+
 end

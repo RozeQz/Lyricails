@@ -85,11 +85,12 @@ en:
         title: Posts
         zero: "%{count} posts"
         one: "%{count} post"
+        few: "%{count} posts"
         other: "%{count} posts"
-      collection:
-        title: Моя коллекция
-        feed: Моя коллекция
-        lyrics: Текст композиции
+    collection:
+      title: My collection
+      feed: My collection
+      lyrics: Song lyrics
     update:
       success: User was successfully updated.
 

@@ -86,7 +86,7 @@ ru:
         zero: "%{count} публикаций"
         one: "%{count} публикация"
         few: "%{count} публикации"
-        other: "%{count} публикаций"
+        many: "%{count} публикаций"
     collection:
       title: Моя коллекция
       feed: Моя коллекция

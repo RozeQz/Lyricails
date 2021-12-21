@@ -14,12 +14,12 @@
         </a>
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li><%= nav_tab t('menu.home'), root_path,
-            { class: 'nav-link px-2', current_page: current_page } %></li>
+            { class: 'nav-link px-2', id: 'home_page', current_page: current_page } %></li>
           <% if user_signed_in? %>
             <li><%= nav_tab t('menu.users'), users_path,
-              { class: 'nav-link px-2', current_page: current_page } %></li>
+              { class: 'nav-link px-2', id: 'users_page', current_page: current_page } %></li>
             <li><%= nav_tab t('menu.collection'), collection_user_path(current_user),
-              { class: 'nav-link px-2', current_page: current_page } %></li>
+              { class: 'nav-link px-2', id: 'collection_page', current_page: current_page } %></li>
           <% end %>
         </ul>
         
@@ -27,7 +27,7 @@
           <ul class="nav">
             <% if user_signed_in? %>
               <div class="upload-buttom-section">
-                <%= link_to t('global.buttons.upload'), new_post_path, class: 'btn btn-outline-primary me-2' %>
+                <%= link_to t('global.buttons.upload'), new_post_path, class: 'btn btn-outline-primary me-2', id: 'upload' %>
               </div>
 
                 <li class="dropdown">
@@ -41,7 +41,7 @@
                         <% if I18n.locale == locale %>
                           <%= tag.span t(locale), class: 'dropdown-item' %>
                         <% else %>
-                          <%= link_to t(locale), root_path(locale: locale), class: 'dropdown-item' %>
+                          <%= link_to t(locale), url_for(locale: locale), class: 'dropdown-item' %>
                         <% end %>
                       </li>
                     <% end %>
