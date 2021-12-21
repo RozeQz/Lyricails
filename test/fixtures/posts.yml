@@ -3,9 +3,9 @@
 one:
   title: MyString
   lyrics: MyText
-  user: one
+  user_id: 1
 
 two:
   title: MyString
   lyrics: MyText
-  user: two
+  user_id: 2

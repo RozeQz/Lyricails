@@ -37,6 +37,7 @@ gem 'valid_email2', '~> 4.0'
 gem 'streamio-ffmpeg', '~> 3.0', '>= 3.0.2'
 # gem 'better_errors', '~> 2.9', '>= 2.9.1'
 gem 'binding_of_caller', '~> 1.0'
+gem 'drb'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
