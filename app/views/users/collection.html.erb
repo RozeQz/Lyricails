@@ -1,4 +1,4 @@
-<% provide :page_title, t('.title') %>
+<% provide :page_title, t('menu.collection') %>
 <% currently_at t('menu.collection') %>
 
 <% if user_signed_in? %>
@@ -17,10 +17,10 @@
           </div>
         </div>
         <div class="audio">
-          <audio controls class="music-bar">
-            <source src="<%= rails_blob_url(post.music) %>" type="<%= post.music.content_type %>" >
-          </audio>
-        </div>
+        <audio controls class="music-bar">
+          <source src="<%= rails_blob_url(post.music) %>" >
+        </audio>
+      </div>
       </div>
       <% unless post.lyrics.empty? %>
         <div class="accordion accordion-flush" id="accordionFlush">

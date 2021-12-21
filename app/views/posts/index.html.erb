@@ -22,7 +22,7 @@
         <div class="track-options">
           <div class="like-section">
             <div class="like-item"><%= render "posts/votes_score", post: post %></div>
-            <div class="like-item"><%= render "posts/upvote_link", post: post %></div>
+            <div class="like-item like-btn"><%= render "posts/upvote_link", post: post %></div>
           </div>
           <%# <div class="options-section">
             <i class="fas fa-times"></i>
@@ -31,7 +31,7 @@
       </div>
       <div class="audio">
         <audio controls class="music-bar">
-          <source src="<%= rails_blob_url(post.music) %>" type="<%= post.music.content_type %>" >
+          <source src="<%= rails_blob_url(post.music) %>" >
         </audio>
       </div>
     </div>
