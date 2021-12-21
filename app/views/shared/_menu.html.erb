@@ -63,8 +63,8 @@
               </li>
 
             <% else %>
-              <button type="button" class="btn btn-outline-primary me-2" onClick='location.href="/session/login"'>Войти</button>
-              <button type="button" class="btn btn-primary", onClick='location.href="/users/new"'>Зарегистрироваться</button>
+              <button type="button" class="btn btn-outline-primary me-2" onClick='location.href="/session/login"'><%= t('global.sign_in') %></button>
+              <button type="button" class="btn btn-primary", onClick='location.href="/users/new"'><%= t('global.register') %></button>
             <% end %>
           </ul>
         </div>

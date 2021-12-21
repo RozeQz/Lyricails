@@ -4,6 +4,7 @@ module SessionHelper
   def sign_in(user)
     jar = ActionDispatch::Cookies::CookieJar.build(request, response.cookies)
     jar.signed[:user_id] = { value: user.id, expires: 2.days, http_only: true }
+    cookies.signed[:user_id] = { value: user.id, expires: 2.days, http_only: true }
     self.current_user = user
   end
 
@@ -14,6 +15,7 @@ module SessionHelper
   def sign_out
     jar = ActionDispatch::Cookies::CookieJar.build(request, response.cookies)
     jar.signed[:user_id] = nil
+    cookies.signed[:user_id] = nil
     self.current_user = nil
   end
 

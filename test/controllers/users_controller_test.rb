@@ -1,18 +1,18 @@
 require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  include SessionHelper
+  # include SessionHelper
 
-  setup do
-    @user = users(:one)
-  end
+  # setup do
+  #   @user = users(:one)
+  # end
 
-  test "should get index" do
-    get session_login_path
-    jar = ActionDispatch::Cookies::CookieJar.build(request, response.cookies)
-    jar.signed[:user_id] = { value: @user.id, expires: 2.days, http_only: true }
-    assert_response :success
-  end
+  # test "should get index" do
+  #   get session_login_path
+  #   jar = ActionDispatch::Cookies::CookieJar.build(request, response.cookies)
+  #   jar.signed[:user_id] = { value: @user.id, expires: 2.days, http_only: true }
+  #   assert_response :success
+  # end
 
   # test "should get new" do
   #   get new_user_url
