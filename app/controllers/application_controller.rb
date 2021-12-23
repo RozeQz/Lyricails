@@ -4,12 +4,12 @@ class ApplicationController < ActionController::Base
   include ErrorHandling
   include SessionHelper
 
+  around_action :switch_locale
   before_action :require_login
   before_action :update_last_login_at, if: lambda {
                                              user_signed_in? &&
                                                (current_user.last_login_at.nil? || current_user.last_login_at < 3.minutes.ago)
                                            }
-  around_action :switch_locale
 
   def update_last_login_at
     current_user.update_attribute(:last_login_at, Time.current)

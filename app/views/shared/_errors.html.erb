@@ -2,7 +2,7 @@
   <div class="alert alert-danger">
     <ul class="mb-0">
       <% object.errors.values.each do |error| %>
-        <li><%= error %></li>
+        <li><%= t(error) %></li>
       <% end %>
     </ul>
   </div>
