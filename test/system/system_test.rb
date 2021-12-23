@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class PostsTest < ApplicationSystemTestCase
+class SystemTest < ApplicationSystemTestCase
   include SessionHelper
 
   setup do
@@ -49,6 +49,7 @@ class PostsTest < ApplicationSystemTestCase
     assert_changes('@user.posts.count') do
       click_on "Delete"
       page.accept_alert
+      sleep 2
     end
   end
 

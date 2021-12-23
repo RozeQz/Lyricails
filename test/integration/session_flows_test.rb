@@ -31,6 +31,7 @@ class SessionFlowsTest < ActionDispatch::IntegrationTest
   test 'user will see his page after signing up' do
     post users_path,
          params: { user: { username: @username, email: @email, password: @password, password_confirmation: @password } }
+    assert_not_nil User.find_by(username: @username)
     assert_redirected_to user_url(User.last)
   end
 
