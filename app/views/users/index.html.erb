@@ -3,20 +3,20 @@
 
 <h1><%= t('.title') %></h1><br/>
 
-<table class="w-100">
+<table class="users-table">
   <thead>
     <tr class="row">
-      <th class="col-2"><%= t('.username') %></th>
-      <th class="col-2"><%= t('.last_login_at') %></th>
-      <th class="col-1"></th>
+      <th class="col username-col"><%= t('.username') %></th>
+      <th class="col online-col"><%= t('.last_login_at') %></th>
+      <th class="col"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr class="row">
-        <td class="col-2"><%= user.username %></td>
-        <td class="col-2">
+        <td class="col username-col"><%= user.username %></td>
+        <td class="col online-col">
         <% if @online_users&.index(user) %>
           <span class="badge badge-pill alert-success">Online</span>
         <% else %>
@@ -29,12 +29,8 @@
           <% end %>
         <% end %>
         </td>
-        <td class="col-1"><%= link_to t('global.buttons.visit'), user %></td>
+        <td class="col"><%= link_to t('global.buttons.visit'), user %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%# <button onClick='location.href="/users/new"' type="button" class="btn btn-outline-primary me-2">Зарегистрировать пользователя</button> %>

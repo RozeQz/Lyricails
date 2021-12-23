@@ -46,7 +46,7 @@
 
     <% if current_user == @user %>
       <div class="user-buttons">
-        <%= link_to t('global.buttons.edit'), edit_user_path(@user), class: "btn btn-outline-primary me-3" %>
+        <%= link_to t('global.buttons.edit'), edit_user_path(@user), class: "btn btn-outline-primary me-3 btn-edit" %>
         <%= link_to t('.delete_account'), @user, class: "btn btn-outline-danger me-2", method: :delete, data: { confirm: 'Вы уверены?' } %>
       </div>
     <% end %>

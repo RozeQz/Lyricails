@@ -8,7 +8,7 @@
     </div>
 
     <div class="form-group pb-3 d-flex">
-      <%= form.file_field :avatar, accept: 'image/*', class: 'form-control'%>
+      <%= form.file_field :avatar, direct_upload: true, accept: 'image/*', class: 'form-control'%>
     </div>
   <% end %>
 

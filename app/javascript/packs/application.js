@@ -16,7 +16,7 @@ import "channels"
 //= require rails-ujs
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 import "bootstrap"

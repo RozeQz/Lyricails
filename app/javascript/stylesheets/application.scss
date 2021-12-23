@@ -10,61 +10,70 @@
 }
 
 .accordion-flush .accordion-item .accordion-button {
-	background-color: #222222;
+  background-color: #222222;
   color: white;
   font-size: 14px;
 }
 
-.accordion-collapse{
+.accordion-collapse {
   background-color: #222222;
   color: white;
   font-size: 16px;
 }
 
-.user-link{
+.user-link {
   text-decoration: none;
   color: black;
 }
 
-.user-posts-count{
+.user-posts-count {
   margin-bottom: 15px;
 }
 
-.post-header{
+.online-col{
+  min-width: 210px;
+}
+
+.username-col{
+  max-width: 170px;
+}
+
+.post-header {
   justify-content: space-between;
 }
 
-.post-buttons{
+.post-buttons {
   display: flex;
 }
 
-.post-like:hover{
+.post-like:hover {
   cursor: pointer;
 }
 
-.user-buttons{
+.user-buttons {
   margin-top: 40px;
 }
 
-.user-info{
+.user-info {
   width: 50%;
   min-width: 300px;
+  display: block;
 }
 
-.user-songs{
+.user-songs {
   width: 700px;
   min-width: 560px;
   text-align: start;
-  
+  display: block;
 }
 
-.user-page{
+.user-page {
   display: flex;
   margin: auto;
   justify-content: space-between;
 }
 
-.post-container{
+.post-container {
   max-width: 700px;
   min-width: 300px;
   border-radius: 10px;
@@ -72,43 +81,43 @@
   margin-bottom: 10px;
 }
 
-.user-typed-info{
+.user-typed-info {
   padding-top: 20px;
 }
 
-.audio-container{
+.audio-container {
   max-width: 700px;
   min-width: 300px;
-  box-shadow: 0 4px 8px -4px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.3);
   position: relative;
   border-radius: 10px 10px 0px 0px;
   overflow: hidden;
 }
 
-.audio-container .like-section{
+.audio-container .like-section {
   display: flex;
 }
 
-.audio-container .like-item{
+.audio-container .like-item {
   margin-right: 7px;
 
-  i{
-    color: #F664AF;
+  i {
+    color: #f664af;
   }
 }
 
-.audio-container .audio{
+.audio-container .audio {
   background: #222;
   width: 100%;
   height: 76px;
   justify-content: center;
   display: flex;
-} 
+}
 
-.audio-container .track-header{
+.audio-container .track-header {
   position: absolute;
   color: #fff;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   padding: 8px 32px;
   border-radius: 10px;
@@ -118,14 +127,23 @@
 }
 
 .audio-container .audio .music-bar {
-  width: 100%
+  width: 100%;
+}
+
+.session-form{
+  width: 400px;
+  margin: auto
+}
+
+.users-table{
+  min-width: 570px;
 }
 
 .flag {
   width: 16px;
   height: 16px;
   display: inline-block;
-  background: url('../../assets/images/flags.png') no-repeat;
+  background: url("../../assets/images/flags.png") no-repeat;
   overflow: hidden;
   text-indent: -9999px;
   text-align: left;
@@ -133,7 +151,6 @@
 
 .ru-flag {
   background-position: -1px -0px;
-
 }
 .en-flag {
   background-position: -1px -17px;
@@ -144,15 +161,77 @@
     position: relative;
     top: 2px;
   }
-  .upload-buttom-section{
+  .upload-buttom-section {
     height: 40px;
     position: relative;
     top: 2px;
   }
 }
 
-.not-a-mozilla{
+.not-a-mozilla {
   position: relative;
   top: 35px;
   background-color: #f1f3f4;
+}
+
+@media (max-width: 992px) {
+  .user-page {
+    display: flex;
+    flex-direction: column;
+  }
+  nav {
+    flex-direction: column;
+  }
+  .nav-user {
+    flex-direction: row;
+  }
+  .user-songs {
+    margin-top: 30px;
+    width: 100%;
+  }
+  .user-buttons{
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 755px) {
+  .btn-edit{
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .user-songs {
+    width: 100%;
+  }
+  .audio-container {
+    max-width: 530px;
+  }
+  .accordion {
+    max-width: 530px;
+  }
+}
+
+@media (max-width: 580px) {
+  .user-songs {
+    width: 100%;
+  }
+  .audio-container {
+    max-width: 460px;
+  }
+  .accordion {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-container {
+    max-width: 418px;
+  }
+  .accordion {
+    max-width: 418px;
+  }
+  .username-col{
+    max-width: 130px;
+  }
 }

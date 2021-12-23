@@ -23,51 +23,50 @@
           <% end %>
         </ul>
         
-        <div class="col-md-3 justify-content-end d-flex">
-          <ul class="nav">
-            <% if user_signed_in? %>
-              <div class="upload-buttom-section">
-                <%= link_to t('global.buttons.upload'), new_post_path, class: 'btn btn-outline-primary me-2', id: 'upload' %>
-              </div>
+        <ul class="nav ol-md-3 justify-content-end d-flex nav-user">
+          <% if user_signed_in? %>
+            <div class="upload-buttom-section">
+              <%= link_to t('global.buttons.upload'), new_post_path, class: 'btn btn-outline-primary me-2', id: 'upload' %>
+            </div>
 
-                <li class="dropdown">
-                  <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-dark', data: {"bs-toggle": 'dropdown'} do %>
-                    <%= tag.div '', class: "flag #{I18n.locale}-flag mt-1" %>
-                    <%= t I18n.locale %>
+              <li class="dropdown">
+                <%= link_to '#', class: 'nav-link px-2 dropdown-toggle text-dark', data: {"bs-toggle": 'dropdown'} do %>
+                  <%= tag.div '', class: "flag #{I18n.locale}-flag mt-1" %>
+                  <%= t I18n.locale %>
+                <% end %>
+                <ul class="dropdown-menu">
+                  <% I18n.available_locales.each do |locale| %>
+                    <li>
+                      <% if I18n.locale == locale %>
+                        <%= tag.span t(locale), class: 'dropdown-item' %>
+                      <% else %>
+                        <%= link_to t(locale), url_for(locale: locale), class: 'dropdown-item' %>
+                      <% end %>
+                    </li>
                   <% end %>
-                  <ul class="dropdown-menu">
-                    <% I18n.available_locales.each do |locale| %>
-                      <li>
-                        <% if I18n.locale == locale %>
-                          <%= tag.span t(locale), class: 'dropdown-item' %>
-                        <% else %>
-                          <%= link_to t(locale), url_for(locale: locale), class: 'dropdown-item' %>
-                        <% end %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </li>
-
-              <li class="dropdown" id="dropdownMenuLink">
-                <%= nav_tab current_user.username, '#',
-                    class: 'nav-link px-2 dropdown-toggle',
-                    data: {'bs-toggle': 'dropdown'}, current_page: current_page %>
-                
-                <ul class="dropdown-menu text-end dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                  <li><%= link_to t('global.profile'), current_user, class: 'dropdown-item' %></li>
-                  <li><%= link_to t('global.settings'), edit_user_path(current_user), class: 'dropdown-item' %></li>
-                  <li class="dropdown-divider"></li>  
-                  <li><%= link_to t('global.sing_out'), session_logout_path, class: 'dropdown-item' %></li>
                 </ul>
-
               </li>
 
-            <% else %>
-              <button type="button" class="btn btn-outline-primary me-2" onClick='location.href="/session/login"'><%= t('global.sign_in') %></button>
-              <button type="button" class="btn btn-primary", onClick='location.href="/users/new"'><%= t('global.register') %></button>
-            <% end %>
-          </ul>
-        </div>
+            <li class="dropdown" id="dropdownMenuLink">
+              <%= nav_tab current_user.username, '#',
+                  class: 'nav-link px-2 dropdown-toggle',
+                  data: {'bs-toggle': 'dropdown'}, current_page: current_page %>
+              
+              <ul class="dropdown-menu text-end dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                <li><%= link_to t('global.profile'), current_user, class: 'dropdown-item' %></li>
+                <li><%= link_to t('global.settings'), edit_user_path(current_user), class: 'dropdown-item' %></li>
+                <li class="dropdown-divider"></li>  
+                <li><%= link_to t('global.sing_out'), session_logout_path, class: 'dropdown-item' %></li>
+              </ul>
+
+            </li>
+
+          <% else %>
+            <button type="button" class="btn btn-outline-primary me-2" onClick='location.href="/session/login"'><%= t('global.sign_in') %></button>
+            <button type="button" class="btn btn-primary", onClick='location.href="/users/new"'><%= t('global.register') %></button>
+          <% end %>
+        </ul>
+        
       </nav>
     </header>
   </div>
