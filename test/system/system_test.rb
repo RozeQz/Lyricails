@@ -15,16 +15,16 @@ class PostsTest < ApplicationSystemTestCase
   test 'redirect to root_path after login' do
     visit session_login_path
     fill_in 'username', with: users(:one).username
-    fill_in 'password', with: 'secret'
+    fill_in 'password', with: 'S1cret'
     click_on 'submit-btn'
-    sleep 2
+    sleep 1
     assert_selector 'h1', text: 'Feed'
   end
 
   test 'signed user can upload files' do
     visit session_login_path
     fill_in 'username', with: users(:one).username
-    fill_in 'password', with: 'secret'
+    fill_in 'password', with: 'S1cret'
     click_on 'submit-btn'
     assert_difference('@user.posts.count') do
       click_on 'upload'
@@ -36,10 +36,26 @@ class PostsTest < ApplicationSystemTestCase
     end
   end
 
+  test 'signed user can delete his posts' do
+    visit session_login_path
+    fill_in 'username', with: users(:one).username
+    fill_in 'password', with: 'S1cret'
+    click_on 'submit-btn'
+    click_on 'upload'
+    fill_in 'title', with: posts(:one).title
+    fill_in 'title', with: posts(:one).title
+    attach_file 'file', 'test/fixtures/files/GunsNRoses - ThisILove.mp3'
+    click_on 'submit-btn'
+    assert_changes('@user.posts.count') do
+      click_on "Delete"
+      page.accept_alert
+    end
+  end
+
   test 'signed user can like posts and see them in the collection' do
     visit session_login_path
     fill_in 'username', with: users(:one).username
-    fill_in 'password', with: 'secret'
+    fill_in 'password', with: 'S1cret'
     click_on 'submit-btn'
     click_on 'upload'
     fill_in 'title', with: posts(:one).title
@@ -53,4 +69,13 @@ class PostsTest < ApplicationSystemTestCase
     assert_selector '.track-name', text: posts(:one).title
   end
 
+  test 'user can switch the language' do
+    visit session_login_path
+    fill_in 'username', with: users(:one).username
+    fill_in 'password', with: 'S1cret'
+    click_on 'submit-btn'
+    find("#locale-btn", match: :first).click
+    find("#ru", match: :first).click
+    assert_selector 'h1', text: 'Лента'
+  end
 end

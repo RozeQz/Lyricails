@@ -3,11 +3,11 @@
 one:
   username: UserOne
   email: user@one.ru
-  password_digest: <%= BCrypt::Password.create('secret') %>
+  password_digest: <%= BCrypt::Password.create('S1cret') %>
   last_login_at: 2021-12-12 16:34:34
 
 two:
   username: UserTwo
   email: user@two.ru
-  password_digest: <%= BCrypt::Password.create('secret') %>
+  password_digest: <%= BCrypt::Password.create('S1cret') %>
   last_login_at: 2021-12-12 16:34:34

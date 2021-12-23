@@ -37,5 +37,20 @@ class PostTest < ActiveSupport::TestCase
     assert post.save
     assert Post.find_by(title: @title)
   end
+
+  test 'check that post with audio attachment but without lyrics should be saved' do
+    post = Post.new( title: @title, user_id: @user_id)
+    post.music.attach(
+      io: File.open(
+        Rails.root.join(
+          'app', 'assets', 'audio', 'GunsNRoses-ThisILove.mp3'
+        )
+      ),
+      filename: 'GunsNRoses-ThisILove.mp3',
+      content_type: 'audio/mp3'
+    )
+    assert post.save
+    assert Post.find_by(title: @title)
+  end
 end
 
