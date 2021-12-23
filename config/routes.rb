@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     resources :posts, except: %i[show] do
       member do
         patch "upvote", to: "posts#upvote"
-        get 'author_options', to: 'posts#author_options'
       end
     end
   end

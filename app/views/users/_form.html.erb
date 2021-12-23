@@ -1,5 +1,9 @@
 <%= form_with model: user, html: {multipart: true}, class: 'col-4 form-settings' do |form| %>
 
+<% unless current_user.nil? || current_user == user %>
+  <p class="text-danger"> Нельзя редактировать профиль другого пользователя! </p>
+<% else %>
+
 <% user.add_default_avatar %>
 
   <% unless user.new_record? %>
@@ -39,13 +43,14 @@
   <% end %>
 
   <div class="d-flex m-auto">
-
-    <div class="form-group mt-3 form-button">
+    <div class="form-group form-button">
         <%= form.submit (user.new_record? ? t('global.buttons.register') : t('global.buttons.save')), class: 'btn btn-primary', id: 'submit-btn' %>
     </div>
 
+    <% unless user.new_record? %>
+      <%= link_to t('global.buttons.cancel'), user_path(user), class: 'btn btn-outline-danger ms-3' %>
+    <% end %>
   </div>
 
-
+  <% end %>
 <% end %>
-

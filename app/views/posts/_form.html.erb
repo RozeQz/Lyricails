@@ -1,4 +1,9 @@
-<%= form_with model: post, html: {multipart: true}, class: 'form-settings' do |form| %>
+<%= form_with model: post, html: {multipart: true}, class: 'col-4 form-settings' do |form| %>
+
+  <% unless current_user.nil? || current_user == post.user %>
+    <p class="text-danger"> Нельзя редактировать публикации других пользователей! </p>
+  <% else %>
+
     <div class="form-group pb-3">
       <%= form.label :title %>
       <%= form.text_field :title, placeholder: t('.song_title'), class: 'form-control', id: 'title', required: true %>
@@ -17,6 +22,8 @@
       <%= form.submit (post.new_record? ? t('global.buttons.post') : t('global.buttons.save')), id: 'submit-btn', class: 'btn btn-primary' %>
     </div>
 
-<% end %>
+  <% end %>
+  
+  <%= link_to t('global.buttons.cancel'), posts_path, class: 'btn btn-outline-danger' %>
 
-<%= link_to t('global.buttons.cancel'), posts_path, class: 'btn btn-outline-danger' %>
+<% end %>
