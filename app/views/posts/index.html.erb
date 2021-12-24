@@ -1,6 +1,12 @@
 <% provide :page_title, t('.title') %>
 <% currently_at t('menu.home') %>
 
+<style>
+  .guest_like{
+    cursor: pointer;
+  }
+</style>
+
 <h1><%= t('.feed') %></h1>
 
 <% @posts.each do |post| %>
@@ -22,7 +28,11 @@
         <div class="track-options">
           <div class="like-section">
             <div class="like-item"><%= render "posts/votes_score", post: post %></div>
-            <div class="like-item like-btn"><%= render "posts/upvote_link", post: post %></div>
+            <% if user_signed_in? %>
+              <div class="like-item like-btn"><%= render "posts/upvote_link", post: post %></div>
+            <% else %>
+              <div class="like-item like-btn guest_like"><i class="far fa-heart", onClick="alert('Log in first!')"></i></div>
+            <% end %>
           </div>
           <%# <div class="options-section">
             <i class="fas fa-times"></i>

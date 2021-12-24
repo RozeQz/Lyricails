@@ -13,11 +13,9 @@ class SessionController < ApplicationController
     # Внутри себя он хэширует переданные ему параметры и сравнимавает это с
     # содержимым в базе данных.
     if user&.authenticate(params[:password])
-      p 'LOGIN'
       sign_in user
       redirect_to root_path
     else
-      p 'REDIRECT'
       flash[:danger] = t('.error')
       redirect_to session_login_path
     end

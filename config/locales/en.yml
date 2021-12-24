@@ -130,3 +130,5 @@ en:
       post: Post
       delete: Delete
       sign_in: Sign In
+    alerts: 
+      like: Log in first!
