@@ -1,7 +1,7 @@
 <%= form_with model: post, html: {multipart: true}, class: 'col-4 form-settings' do |form| %>
 
   <% unless current_user.nil? || current_user == post.user %>
-    <p class="text-danger"> Нельзя редактировать публикации других пользователей! </p>
+    <p class="text-danger"> <%= t('user.errors.access.post') %> </p>
   <% else %>
 
     <div class="form-group pb-3">

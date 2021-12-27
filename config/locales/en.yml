@@ -60,6 +60,7 @@ en:
       label: No account yet?
   
   users:
+    editing: Editing user
     index:
       title: Users
       username: Username
@@ -110,6 +111,9 @@ en:
         uniqueness: User with this username already exists.
       avatar: 
         presence: Avatar should be uploaded or deleted.
+      access:
+        edit: You cannot edit other user's profile!
+        post: You cannot edit other user's posts!
   
   global:
     profile: Profile

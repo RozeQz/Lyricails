@@ -1,7 +1,7 @@
 <%= form_with model: user, html: {multipart: true}, class: 'col-4 form-settings' do |form| %>
 
 <% unless current_user.nil? || current_user == user %>
-  <p class="text-danger"> Нельзя редактировать профиль другого пользователя! </p>
+  <p class="text-danger"> <%= t('user.errors.access.edit') %> </p>
 <% else %>
 
 <% user.add_default_avatar %>

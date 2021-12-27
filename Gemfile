@@ -40,7 +40,6 @@ gem 'valid_email2', '~> 4.0'
 gem 'binding_of_caller', '~> 1.0'
 gem 'drb'
 gem 'paperclip', '~> 6.1'
-gem 'rubocop'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
