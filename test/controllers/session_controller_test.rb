@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class SessionControllerTest < ActionDispatch::IntegrationTest
   # include SessionHelper
@@ -21,5 +23,4 @@ class SessionControllerTest < ActionDispatch::IntegrationTest
   #   get session_logout_path
   #   assert_redirected_to session_login_path
   # end
-
 end

@@ -1,4 +1,6 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class SystemTest < ApplicationSystemTestCase
   include SessionHelper
@@ -47,7 +49,7 @@ class SystemTest < ApplicationSystemTestCase
     attach_file 'file', 'test/fixtures/files/GunsNRoses - ThisILove.mp3'
     click_on 'submit-btn'
     assert_changes('@user.posts.count') do
-      click_on "Delete"
+      click_on 'Delete'
       page.accept_alert
       sleep 2
     end
@@ -64,7 +66,7 @@ class SystemTest < ApplicationSystemTestCase
     attach_file 'file', 'test/fixtures/files/GunsNRoses - ThisILove.mp3'
     click_on 'submit-btn'
     sleep 1
-    find(".like-btn", match: :first).click
+    find('.like-btn', match: :first).click
     sleep 1
     click_on 'collection_page'
     assert_selector '.track-name', text: posts(:one).title
@@ -75,8 +77,8 @@ class SystemTest < ApplicationSystemTestCase
     fill_in 'username', with: users(:one).username
     fill_in 'password', with: 'S1cret'
     click_on 'submit-btn'
-    find("#locale-btn", match: :first).click
-    find("#ru", match: :first).click
+    find('#locale-btn', match: :first).click
+    find('#ru', match: :first).click
     assert_selector 'h1', text: 'Лента'
   end
 end

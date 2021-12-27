@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   belongs_to :user
   # has_many :likes, dependent: :destroy
@@ -9,5 +11,4 @@ class Post < ApplicationRecord
 
   has_one_attached :music
   validates :music, attached: true, content_type: %i[mp3 wav]
-
 end

@@ -1,12 +1,14 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   fixtures :users
 
-  setup do 
-    @title = Faker::Music.band + " " + Faker::Music::RockBand.song
+  setup do
+    @title = "#{Faker::Music.band} #{Faker::Music::RockBand.song}"
     @lyrics = Faker::Quote.famous_last_words
-    @user_id = User.last.id 
+    @user_id = User.last.id
     puts @title
     puts @lyrics
     puts @user_id
@@ -19,12 +21,12 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'check that post with no attachment cannot be saved' do
-    post = Post.new( title: @title, lyrics: @lyrics, user_id: @user_id)
+    post = Post.new(title: @title, lyrics: @lyrics, user_id: @user_id)
     refute post.save
   end
 
   test 'check that post with audio attachment should be saved' do
-    post = Post.new( title: @title, lyrics: @lyrics, user_id: @user_id)
+    post = Post.new(title: @title, lyrics: @lyrics, user_id: @user_id)
     post.music.attach(
       io: File.open(
         Rails.root.join(
@@ -39,7 +41,7 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'check that post with audio attachment but without lyrics should be saved' do
-    post = Post.new( title: @title, user_id: @user_id)
+    post = Post.new(title: @title, user_id: @user_id)
     post.music.attach(
       io: File.open(
         Rails.root.join(
@@ -53,4 +55,3 @@ class PostTest < ActiveSupport::TestCase
     assert Post.find_by(title: @title)
   end
 end
-

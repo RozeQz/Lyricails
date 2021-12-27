@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
   before_action :set_post, only: %i[edit update destroy upvote]
   skip_before_action :require_login, only: %i[index]
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order('created_at DESC')
     @post = Post.new
   end
 
@@ -18,7 +20,7 @@ class PostsController < ApplicationController
     else
       @post.upvote_by current_user
     end
-    render "vote.js.erb"
+    render 'vote.js.erb'
   end
 
   # GET /posts/new
@@ -27,8 +29,7 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /posts or /posts.json
   def create
@@ -69,13 +70,14 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:title, :lyrics, :music, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:title, :lyrics, :music, :user_id)
+  end
 end

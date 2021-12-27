@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def update
     @user.avatar.attach(params[:avatar]) unless params[:avatar].nil?
     respond_to do |format|
-      if (current_user == @user && @user.update(user_params))
+      if current_user == @user && @user.update(user_params)
         format.html do
           flash[:success] = t('.success')
           redirect_to @user

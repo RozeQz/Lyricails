@@ -53,20 +53,24 @@ class SessionFlowsTest < ActionDispatch::IntegrationTest
   end
 
   test 'user should be able to create posts' do
-    title = Faker::Music.band + " " + Faker::Music::RockBand.song
+    title = "#{Faker::Music.band} #{Faker::Music::RockBand.song}"
     lyrics = Faker::Quote.famous_last_words
     post session_create_path, params: { username: users(:one).username, password: 'S1cret' }
     assert_difference('users(:one).posts.count') do
-      post posts_path, params: { post: { title: title, lyrics: lyrics, user_id: users(:one).id, music: fixture_file_upload("GunsNRoses - ThisILove.mp3", "audio/mp3") } }
-    end 
+      post posts_path,
+           params: { post: { title: title, lyrics: lyrics, user_id: users(:one).id,
+                             music: fixture_file_upload('GunsNRoses - ThisILove.mp3', 'audio/mp3') } }
+    end
     assert_response :found
   end
 
   test 'user should be able to delete posts' do
     post session_create_path, params: { username: users(:one).username, password: 'S1cret' }
-    title = Faker::Music.band + " " + Faker::Music::RockBand.song
+    title = "#{Faker::Music.band} #{Faker::Music::RockBand.song}"
     lyrics = Faker::Quote.famous_last_words
-    post posts_path, params: { post: { title: title, lyrics: lyrics, user_id: users(:one).id, music: fixture_file_upload("GunsNRoses - ThisILove.mp3", "audio/mp3") } } 
+    post posts_path,
+         params: { post: { title: title, lyrics: lyrics, user_id: users(:one).id,
+                           music: fixture_file_upload('GunsNRoses - ThisILove.mp3', 'audio/mp3') } }
     assert_changes('users(:one).posts.count') do
       delete post_path(Post.find_by(user_id: users(:one).id))
     end
